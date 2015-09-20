@@ -13,14 +13,14 @@ using System.Linq;
 using LeagueSharp;
 using LeagueSharp.Common;
 
-namespace Activator
+namespace Activator.Handlers
 {
-    public class projectionhandler
+    public class Projections
     {
         public static Obj_AI_Hero Target;
         public static int Casted;
 
-        public static void init()
+        public static void Load()
         {
             GameObject.OnCreate += GameObject_OnCreate;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast; 
@@ -42,7 +42,7 @@ namespace Activator
             var startPos = missile.StartPosition.To2D();
             var endPos = missile.EndPosition.To2D();
 
-            var data = spelldata.GetByMissileName(missile.SData.Name.ToLower());
+            var data = Data.SpellData.GetByMissileName(missile.SData.Name.ToLower());
             if (data == null)
                 return;
 
@@ -108,7 +108,7 @@ namespace Activator
                 if (Activator.Origin.Item(data.SDataName + "forceexhaust").GetValue<bool>())
                     hero.HitTypes.Add(HitType.ForceExhaust);
                 
-                Utility.DelayAction.Add((int) endtime + 350, () =>
+                Utility.DelayAction.Add((int) endtime + 100, () =>
                 {
                     if (hero.IncomeDamage > 0)
                         hero.IncomeDamage -= 1;
@@ -176,7 +176,7 @@ namespace Activator
                                 hero.HitTypes.Add(HitType.AutoAttack);
                                 hero.IncomeDamage += dmg;
 
-                                Utility.DelayAction.Add(800, delegate
+                                Utility.DelayAction.Add(250, delegate
                                 {
                                     hero.Attacker = null;
                                     hero.IncomeDamage -= dmg;
@@ -188,7 +188,7 @@ namespace Activator
 
                     #endregion
 
-                    foreach (var data in spelldata.spells.Where(x => x.SDataName == args.SData.Name.ToLower()))
+                    foreach (var data in Data.SpellData.Spells.Where(x => x.SDataName == args.SData.Name.ToLower()))
                     {
                         #region self/selfaoe spell detection
 
@@ -206,7 +206,7 @@ namespace Activator
                                 continue;
 
                             if (data.SDataName == "kalistaexpungewrapper" && 
-                                !hero.Player.HasBuff("kalistaexpungemarker", true))
+                                !hero.Player.HasBuff("kalistaexpungemarker"))
                                 continue;
 
                             var evadetime = 1000 * (data.CastRange - hero.Player.Distance(correctpos) +
@@ -247,7 +247,7 @@ namespace Activator
                                     hero.HitTypes.Add(HitType.ForceExhaust);
 
                                 // lazy safe reset
-                                Utility.DelayAction.Add((int) (data.Delay + 500), () =>
+                                Utility.DelayAction.Add(250, () =>
                                 {
                                     hero.Attacker = null;
                                     hero.IncomeDamage -= dmg;
@@ -349,7 +349,7 @@ namespace Activator
                                     if (Activator.Origin.Item(data.SDataName + "forceexhaust").GetValue<bool>())
                                         hero.HitTypes.Add(HitType.ForceExhaust);
 
-                                    Utility.DelayAction.Add((int) (endtime + 500), () =>
+                                    Utility.DelayAction.Add(250, () =>
                                     {
                                         hero.Attacker = null;
                                         hero.IncomeDamage -= dmg;
@@ -416,7 +416,7 @@ namespace Activator
                                     hero.HitTypes.Add(HitType.ForceExhaust);
 
                                 // lazy reset
-                                Utility.DelayAction.Add((int)(endtime + 500), () =>
+                                Utility.DelayAction.Add(250, () =>
                                 {
                                     hero.Attacker = null;
                                     hero.IncomeDamage -= dmg;
@@ -462,7 +462,7 @@ namespace Activator
                                     hero.HitTypes.Add(HitType.TurretAttack);
                                     hero.IncomeDamage += dmg;
 
-                                    Utility.DelayAction.Add(650, () =>
+                                    Utility.DelayAction.Add(250, () =>
                                     {
                                         hero.Attacker = null;
                                         hero.IncomeDamage -= dmg;
@@ -495,7 +495,7 @@ namespace Activator
                                 (int) Math.Abs(sender.CalcDamage(hero.Player, Damage.DamageType.Physical,
                                     sender.BaseAttackDamage + sender.FlatPhysicalDamageMod));
 
-                            Utility.DelayAction.Add(500, () =>
+                            Utility.DelayAction.Add(250, () =>
                             {
                                 hero.HitTypes.Remove(HitType.MinionAttack);
                                 hero.MinionDamage = 0;
@@ -524,13 +524,11 @@ namespace Activator
                                 continue;
                             }
 
-                            var dmg = (int)Math.Abs(enemy.GetAutoAttackDamage(hero.Player, true) * 1.6 + 200);
+                            var dmg = (int) Math.Abs(enemy.GetAutoAttackDamage(hero.Player, true) * 1.6 + 200);
 
                             if (args.SData.Name.ToLower() == "gangplankcritattack")
-                            {
                                 dmg = dmg * 2;
-                            }
-
+ 
                             if (!hero.Player.IsValidTarget(float.MaxValue, false) || hero.Player.IsZombie || hero.Immunity)
                             {
                                 hero.Attacker = null;
@@ -539,16 +537,13 @@ namespace Activator
                                 continue;
                             }
 
-                            if (hero.IncomeDamage < 12)
-                                hero.IncomeDamage = 0;
-
                             Utility.DelayAction.Add(250, () =>
                             {
                                 hero.Attacker = enemy;
                                 hero.HitTypes.Add(HitType.Spell);
                                 hero.IncomeDamage += dmg;
 
-                                Utility.DelayAction.Add(800, delegate
+                                Utility.DelayAction.Add(250, delegate
                                 {
                                     hero.Attacker = null;
                                     hero.HitTypes.Remove(HitType.Spell);

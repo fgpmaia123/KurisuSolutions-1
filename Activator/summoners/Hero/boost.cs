@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    internal class boost : summoner
+    internal class boost : CoreSum
     {
         internal override string Name
         {
@@ -47,7 +47,7 @@ namespace Activator.Summoners
                     if (hero.Player.Distance(Player.ServerPosition) > Range)
                         return;
 
-                    spelldebuffhandler.CheckCleanse(hero.Player);
+                    Auras.CheckCleanse(hero.Player);
 
                     if (hero.CleanseBuffCount >= Menu.Item("use" + Name + "number").GetValue<Slider>().Value &&
                         hero.CleanseHighestBuffTime >= Menu.Item("use" + Name + "time").GetValue<Slider>().Value)

@@ -1,9 +1,10 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Defensives
 {
-    class _3180 : item
+    class _3180 : CoreItem
     {
         internal override int Id
         {

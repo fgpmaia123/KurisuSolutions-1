@@ -1,10 +1,11 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Evaders
 {
-    class zedult : spell
+    class zedult : CoreSpell
     {
         internal override string Name
         {

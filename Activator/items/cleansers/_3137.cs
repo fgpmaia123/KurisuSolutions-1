@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Cleansers
 {
-    class _3137 : item
+    class _3137 : CoreItem
     {
         internal override int Id
         {
@@ -70,9 +72,9 @@ namespace Activator.Items.Cleansers
                         continue;
 
                     if (hero.Player.Distance(Player.ServerPosition) > Range)
-                        continue; 
+                        continue;
 
-                    spelldebuffhandler.CheckDervish(hero.Player);
+                    Auras.CheckDervish(hero.Player);
 
                     if (hero.DervishBuffCount >= Menu.Item("use" + Name + "number").GetValue<Slider>().Value &&
                         hero.DervishHighestBuffTime >= Menu.Item("use" + Name + "time").GetValue<Slider>().Value)

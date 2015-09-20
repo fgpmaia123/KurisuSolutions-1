@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Cleansers
 {
-    class _3222 : item
+    class _3222 : CoreItem
     {
         internal override int Id
         {
@@ -70,7 +72,7 @@ namespace Activator.Items.Cleansers
                 if (hero.Player.Distance(Player.ServerPosition) > Range)
                     continue;
 
-                spelldebuffhandler.CheckMikaels(hero.Player);
+                Auras.CheckMikaels(hero.Player);
 
                 if (hero.MikaelsBuffCount >= Menu.Item("use" + Name + "number").GetValue<Slider>().Value &&
                     hero.MikaelsHighestBuffTime >= Menu.Item("use" + Name + "time").GetValue<Slider>().Value)

@@ -1,9 +1,10 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Defensives
 {
-    class _3364 : item
+    class _3364 : CoreItem
     {
         internal override int Id
         {
@@ -63,7 +64,7 @@ namespace Activator.Items.Defensives
                 if (hero.Player.Distance(Player.ServerPosition) > Range)
                     continue;
 
-                if (hero.HitTypes.Contains(HitType.Stealth) || hero.Player.HasBuff("rengarralertsound", true))
+                if (hero.HitTypes.Contains(HitType.Stealth) || hero.Player.HasBuff("rengarralertsound"))
                 {
                     UseItem(hero.Player.ServerPosition, Menu.Item("mode" + Name).GetValue<StringList>().SelectedIndex == 1);
                 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Consumables
 {
-    class _2010 : item
+    class _2010 : CoreItem
     {
         internal override int Id
         {
@@ -74,7 +75,7 @@ namespace Activator.Items.Consumables
                         }
                     }
 
-                    if (hero.Player.HasBuff("ItemMiniRegenPotion", true))
+                    if (hero.Player.HasBuff("ItemMiniRegenPotion"))
                         return;
 
                     if (hero.Player.Health/hero.Player.MaxHealth*100 <=

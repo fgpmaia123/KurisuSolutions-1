@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Consumables
 {
-    class _2137 : item
+    class _2137 : CoreItem
     {
         internal override int Id
         {
@@ -64,7 +65,7 @@ namespace Activator.Items.Consumables
             {
                 if (hero.Player.NetworkId == Player.NetworkId)
                 {
-                    if (hero.Player.HasBuff("ElixirOfRuin", true))
+                    if (hero.Player.HasBuff("ElixirOfRuin"))
                         return;
 
                     if (hero.Player.IsRecalling() || hero.Player.InFountain())

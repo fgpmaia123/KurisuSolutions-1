@@ -8,8 +8,21 @@
 // Author:		Robin Kurisu
 #endregion
 
-namespace Activator
+using System.Collections.Generic;
+using Activator.Items;
+using Activator.Spells;
+using Activator.Summoners;
+
+namespace Activator.Handlers
 {
+    public class Lists
+    {
+        public static List<CoreItem> Items = new List<CoreItem>();
+        public static List<CoreItem> BoughtItems = new List<CoreItem>();
+        public static List<CoreSpell> Spells = new List<CoreSpell>();
+        public static List<CoreSum> Summoners = new List<CoreSum>();
+    }
+
     public enum HitType
     {
         None,

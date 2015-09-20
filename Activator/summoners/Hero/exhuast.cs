@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    internal class exhuast : summoner
+    internal class exhuast : CoreSum
     {
         internal override string Name
         {

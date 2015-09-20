@@ -5,7 +5,7 @@ using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    internal class mana : summoner
+    internal class mana : CoreSum
     {
         internal override string Name
         {

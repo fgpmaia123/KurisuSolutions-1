@@ -6,7 +6,7 @@ using LeagueSharp;
 
 namespace Activator
 {
-    public static class updater
+    public static class Updater
     {
         public static void UpdateCheck()
         {
@@ -15,6 +15,7 @@ namespace Activator
                 {
                     try
                     {
+                        // updater by h3h3
                         using (var c = new WebClient())
                         {
                             var rawVersion =

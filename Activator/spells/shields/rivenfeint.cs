@@ -1,10 +1,11 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class rivenfeint : spell
+    class rivenfeint : CoreSpell
     {
         internal override string Name
         {

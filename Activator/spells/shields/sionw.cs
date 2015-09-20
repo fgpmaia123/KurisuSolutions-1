@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class sionw : spell
+    class sionw : CoreSpell
     {
         internal override string Name
         {

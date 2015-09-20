@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Consumables
 {
-    internal class _2004 : item
+    internal class _2004 : CoreItem
     {
         internal override int Id
         {
@@ -67,7 +68,7 @@ namespace Activator.Items.Consumables
                     if (hero.Player.MaxMana <= 200)
                         continue;
 
-                    if (hero.Player.HasBuff("FlaskOfCrystalWater", true) || hero.Player.HasBuff("ItemCrystalFlask", true))
+                    if (hero.Player.HasBuff("FlaskOfCrystalWater") || hero.Player.HasBuff("ItemCrystalFlask"))
                         return;
 
                     if (hero.Player.Mana/hero.Player.MaxMana*100 <= 

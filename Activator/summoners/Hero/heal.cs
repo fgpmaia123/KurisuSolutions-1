@@ -4,7 +4,7 @@ using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    internal class heal : summoner
+    internal class heal : CoreSum
     {
         internal override string Name
         {

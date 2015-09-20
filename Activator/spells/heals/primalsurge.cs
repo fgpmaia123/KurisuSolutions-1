@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Heals
 {
-    class primalsurge : spell
+    class primalsurge : CoreSpell
     {
         internal override string Name
         {
@@ -42,7 +43,7 @@ namespace Activator.Spells.Heals
             if (!Menu.Item("use" + Name).GetValue<bool>() || !IsReady())
                 return;
 
-            if (Activator.Player.BaseSkinName != "Nidalee")
+            if (Activator.Player.CharData.BaseSkinName != "Nidalee")
                 return;
 
             if (Player.Mana/Player.MaxMana*100 <

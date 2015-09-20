@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class galiobulwark : spell
+    class galiobulwark : CoreSpell
     {
         internal override string Name
         {

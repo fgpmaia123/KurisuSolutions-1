@@ -14,9 +14,9 @@ using System.Linq;
 using LeagueSharp;
 using LeagueSharp.Common;
 
-namespace Activator
+namespace Activator.Handlers
 {
-    public static class spelldebuffhandler
+    public static class Auras
     {
         internal static void CheckDangerousBuffs()
         {

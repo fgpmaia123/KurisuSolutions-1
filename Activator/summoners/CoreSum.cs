@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using LeagueSharp;
 using LeagueSharp.Common;
@@ -6,7 +7,7 @@ using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    public class summoner
+    public class CoreSum
     {
         internal virtual string Name { get; set; }
         internal virtual string DisplayName { get; set; }
@@ -21,7 +22,7 @@ namespace Activator.Summoners
         public SpellSlot Slot { get { return Player.GetSpellSlot(Name); } }
         public Obj_AI_Hero Player { get { return ObjectManager.Player; } }
 
-        public summoner CreateMenu(Menu root)
+        public CoreSum CreateMenu(Menu root)
         {
             Menu = new Menu(DisplayName, "m" + Name);
 

@@ -1,10 +1,11 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Slows
 {
-    class evelynnw : spell
+    class evelynnw : CoreSpell
     {
         internal override string Name
         {

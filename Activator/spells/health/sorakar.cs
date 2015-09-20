@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Health
 {
-    class sorakar : spell
+    class sorakar : CoreSpell
     {
         internal override string Name
         {

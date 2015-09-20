@@ -1,10 +1,11 @@
 ﻿using System;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Slows
 {
-    class garenq : spell
+    class garenq : CoreSpell
     {
         internal override string Name
         {

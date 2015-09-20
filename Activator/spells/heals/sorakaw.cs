@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Heals
 {
-    class sorakaw : spell
+    class sorakaw : CoreSpell
     {
         internal override string Name
         {

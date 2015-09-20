@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using Activator.Spells;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class shenfeint : spell
+    class shenfeint : CoreSpell
     {
         internal override string Name
         {

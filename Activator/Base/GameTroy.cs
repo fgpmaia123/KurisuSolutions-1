@@ -11,9 +11,9 @@
 using LeagueSharp;
 using System.Collections.Generic;
 
-namespace Activator
+namespace Activator.Handlers
 {
-    public class gametroy
+    public class GameTroy
     {
         public int Damage;
         public bool Included;
@@ -23,7 +23,7 @@ namespace Activator
         public SpellSlot Slot;
         public int Start;
 
-        public gametroy(
+        public GameTroy(
             Obj_AI_Hero owner, 
             SpellSlot slot, 
             string name, 
@@ -41,9 +41,9 @@ namespace Activator
             Damage = incdmg;
         }
 
-        public static List<gametroy> Troys = new List<gametroy>(); 
+        public static List<GameTroy> Troys = new List<GameTroy>(); 
 
-        static gametroy()
+        static GameTroy()
         {
             
         }

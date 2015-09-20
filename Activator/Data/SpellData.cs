@@ -15,10 +15,11 @@ using Activator.Spells;
 using Activator.Summoners;
 using System.Collections.Generic;
 using System.Linq;
+using Activator.Handlers;
 
-namespace Activator
+namespace Activator.Data
 {
-    public class spelldata
+    public class SpellData
     {
         public string SDataName { get; set; }
         public string ChampionName { get; set; }
@@ -32,21 +33,25 @@ namespace Activator
         public string[] FromObject { get; set; }
         public HitType[] HitType { get; set; }
 
-        static spelldata()
+        public static List<SpellData> Spells = new List<SpellData>();
+        public static Dictionary<SpellDamageDelegate, SpellSlot> DamageLib = new Dictionary<SpellDamageDelegate, SpellSlot>();
+
+
+        static SpellData()
         {
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aatroxq",
                 ChampionName = "aatrox",
                 Slot = SpellSlot.Q,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aatroxw",
                 ChampionName = "aatrox",
@@ -57,7 +62,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aatroxw2",
                 ChampionName = "aatrox",
@@ -68,19 +73,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aatroxe",
                 ChampionName = "aatrox",
                 Slot = SpellSlot.E,
                 CastRange = 1025f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "aatroxeconemissile",
                 MissileSpeed = 1250
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aatroxr",
                 ChampionName = "aatrox",
@@ -91,7 +96,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ahriorbofdeception",
                 ChampionName = "ahri",
@@ -104,7 +109,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ahrifoxfire",
                 ChampionName = "ahri",
@@ -115,19 +120,19 @@ namespace Activator
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ahriseduce",
                 ChampionName = "ahri",
                 Slot = SpellSlot.E,
                 CastRange = 975f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "ahriseducemissile",
                 MissileSpeed = 1550
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ahritumble",
                 ChampionName = "ahri",
@@ -138,7 +143,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "akalimota",
                 ChampionName = "akali",
@@ -149,18 +154,18 @@ namespace Activator
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "akalismokebomb",
                 ChampionName = "akali",
                 Slot = SpellSlot.W,
                 CastRange = 1000f, // Range: 700 + additional for stealth detection
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "akalishadowswipe",
                 ChampionName = "akali",
@@ -171,7 +176,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "akalishadowdance",
                 ChampionName = "akali",
@@ -182,18 +187,18 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pulverize",
                 ChampionName = "alistar",
                 Slot = SpellSlot.Q,
                 CastRange = 365f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "headbutt",
                 ChampionName = "alistar",
@@ -204,7 +209,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "triumphantroar",
                 ChampionName = "alistar",
@@ -215,7 +220,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "feroucioushowl",
                 ChampionName = "alistar",
@@ -226,19 +231,19 @@ namespace Activator
                 MissileSpeed = 828
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bandagetoss",
                 ChampionName = "amumu",
                 Slot = SpellSlot.Q,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "sadmummybandagetoss",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "auraofdespair",
                 ChampionName = "amumu",
@@ -249,7 +254,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tantrum",
                 ChampionName = "amumu",
@@ -260,7 +265,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "curseofthesadmummy",
                 ChampionName = "amumu",
@@ -270,26 +275,26 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "flashfrost",
                 ChampionName = "anivia",
                 Slot = SpellSlot.Q,
                 CastRange = 1150f, // 1075 + Shatter Radius
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "flashfrostspell",
                 MissileSpeed = 850
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "crystalize",
                 ChampionName = "anivia",
@@ -300,18 +305,18 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "frostbite",
                 ChampionName = "anivia",
                 Slot = SpellSlot.E,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "glacialstorm",
                 ChampionName = "anivia",
@@ -322,30 +327,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "disintegrate",
                 ChampionName = "annie",
                 Slot = SpellSlot.Q,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new [] { global::Activator.HitType.Danger },
+                HitType = new [] { Handlers.HitType.Danger },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "incinerate",
                 ChampionName = "annie",
                 Slot = SpellSlot.W,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, },
+                HitType = new[] { Handlers.HitType.Danger, },
                 MissileName = "",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "moltenshield",
                 ChampionName = "annie",
@@ -356,7 +361,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "infernalguardian",
                 ChampionName = "annie",
@@ -366,14 +371,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "frostshot",
                 ChampionName = "ashe",
@@ -384,30 +389,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "frostarrow",
                 ChampionName = "ashe",
                 Slot = SpellSlot.Q,
                 CastRange = 0f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "volley",
                 ChampionName = "ashe",
                 Slot = SpellSlot.W,
                 CastRange = 1200f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "volleyattack",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ashespiritofthehawk",
                 ChampionName = "ashe",
@@ -418,7 +423,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "enchantedcrystalarrow",
                 ChampionName = "ashe",
@@ -429,27 +434,27 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "enchantedcrystalarrow",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "azirq",
                 ChampionName = "azir",
                 Slot = SpellSlot.Q,
                 CastRange = 875f,
                 Delay = 250f,
-                HitType = new[] {global::Activator.HitType.CrowdControl },
+                HitType = new[] {Handlers.HitType.CrowdControl },
                 MissileName = "azirsoldiermissile",
                 FromObject = new []{ "AzirSoldier" },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "azirr",
                 ChampionName = "azir",
@@ -459,25 +464,25 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bardq",
                 ChampionName = "bard",
                 Slot = SpellSlot.Q,
                 CastRange = 950f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "bardqmissile",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bardw",
                 ChampionName = "bard",
@@ -488,7 +493,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "barde",
                 ChampionName = "bard",
@@ -499,30 +504,30 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bardr",
                 ChampionName = "bard",
                 Slot = SpellSlot.R,
                 CastRange = 3400f,
                 Delay = 450f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "bardr",
                 MissileSpeed = 2100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rocketgrabmissile",
                 ChampionName = "blitzcrank",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "overdrive",
                 ChampionName = "blitzcrank",
@@ -533,54 +538,54 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "powerfist",
                 ChampionName = "blitzcrank",
                 Slot = SpellSlot.E,
                 CastRange = 100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "staticfield",
                 ChampionName = "blitzcrank",
                 Slot = SpellSlot.R,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "brandblaze",
                 ChampionName = "brand",
                 Slot = SpellSlot.Q,
                 CastRange = 1150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "brandblazemissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "brandfissure",
                 ChampionName = "brand",
                 Slot = SpellSlot.W,
                 CastRange = 240f,
                 Delay = 550f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "",
                 MissileSpeed = 20
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "brandconflagration",
                 ChampionName = "brand",
@@ -591,41 +596,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "brandwildfire",
                 ChampionName = "brand",
                 Slot = SpellSlot.R,
                 CastRange = 750f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "braumq",
                 ChampionName = "braum",
                 Slot = SpellSlot.Q,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "braumqmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "braumqmissle",
                 ChampionName = "braum",
                 Slot = SpellSlot.Q,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "braumw",
                 ChampionName = "braum",
@@ -636,7 +641,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "braume",
                 ChampionName = "braum",
@@ -647,7 +652,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "braumrwrapper",
                 ChampionName = "braum",
@@ -657,14 +662,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "braumrmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "caitlynpiltoverpeacemaker",
                 ChampionName = "caitlyn",
@@ -676,7 +681,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "caitlynyordletrap",
                 ChampionName = "caitlyn",
@@ -687,19 +692,19 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "caitlynentrapment",
                 ChampionName = "caitlyn",
                 Slot = SpellSlot.E,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "caitlynentrapmentmissile",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "cassiopeianoxiousblast",
                 ChampionName = "cassiopeia",
@@ -711,18 +716,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "cassiopeiamiasma",
                 ChampionName = "cassiopeia",
                 Slot = SpellSlot.W,
                 CastRange = 925f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 2500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "cassiopeiatwinfang",
                 ChampionName = "cassiopeia",
@@ -733,7 +738,7 @@ namespace Activator
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "cassiopeiapetrifyinggaze",
                 ChampionName = "cassiopeia",
@@ -743,37 +748,37 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "cassiopeiapetrifyinggaze",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rupture",
                 ChampionName = "chogath",
                 Slot = SpellSlot.Q,
                 CastRange = 950f,
                 Delay = 1000f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "rupture",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "feralscream",
                 ChampionName = "chogath",
                 Slot = SpellSlot.W,
                 CastRange = 675f,
                 Delay = 175f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vorpalspikes",
                 ChampionName = "chogath",
@@ -784,18 +789,18 @@ namespace Activator
                 MissileSpeed = 347
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "feast",
                 ChampionName = "chogath",
                 Slot = SpellSlot.R,
                 CastRange = 500f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "phosphorusbomb",
                 ChampionName = "corki",
@@ -807,7 +812,7 @@ namespace Activator
                 MissileSpeed = 1125
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "carpetbomb",
                 ChampionName = "corki",
@@ -818,7 +823,7 @@ namespace Activator
                 MissileSpeed = 700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ggun",
                 ChampionName = "corki",
@@ -829,7 +834,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "missilebarrage",
                 ChampionName = "corki",
@@ -841,7 +846,7 @@ namespace Activator
                 MissileSpeed = 828
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dariuscleave",
                 ChampionName = "darius",
@@ -852,41 +857,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dariusnoxiantacticsonh",
                 ChampionName = "darius",
                 Slot = SpellSlot.W,
                 CastRange = 205f,
                 Delay = 150f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dariusaxegrabcone",
                 ChampionName = "darius",
                 Slot = SpellSlot.E,
                 CastRange = 555f,
                 Delay = 150f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileName = "dariusaxegrabcone",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dariusexecute",
                 ChampionName = "darius",
                 Slot = SpellSlot.R,
                 CastRange = 465f,
                 Delay = 450f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dianaarc",
                 ChampionName = "diana",
@@ -898,7 +903,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dianaorbs",
                 ChampionName = "diana",
@@ -909,29 +914,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dianavortex",
                 ChampionName = "diana",
                 Slot = SpellSlot.E,
                 CastRange = 350f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger,  },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger,  },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dianateleport",
                 ChampionName = "diana",
                 Slot = SpellSlot.R,
                 CastRange = 825f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dravenspinning",
                 ChampionName = "draven",
@@ -942,7 +947,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dravenfury",
                 ChampionName = "draven",
@@ -953,19 +958,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dravendoubleshot",
                 ChampionName = "draven",
                 Slot = SpellSlot.E,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "dravendoubleshotmissile",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dravenrcast",
                 ChampionName = "draven",
@@ -973,24 +978,24 @@ namespace Activator
                 CastRange = 20000f,
                 Global = true,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "dravenr",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "infectedcleavermissilecast",
                 ChampionName = "drmundo",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "infectedcleavermissile",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "burningagony",
                 ChampionName = "drmundo",
@@ -1001,7 +1006,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "masochism",
                 ChampionName = "drmundo",
@@ -1012,7 +1017,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sadism",
                 ChampionName = "drmundo",
@@ -1023,43 +1028,43 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ekkoq",
                 ChampionName = "ekko",
                 Slot = SpellSlot.Q,
                 CastRange = 1075f,
                 Delay = 66f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "ekkoqmis",
                 ExtraMissileNames = new []{ "ekkoqreturn" },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ekkoeattack",
                 ChampionName = "ekko",
                 Slot = SpellSlot.E,
                 CastRange = 300f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-             spells.Add(new spelldata
+             Spells.Add(new SpellData
              {
                  SDataName = "ekkor",
                  ChampionName = "ekko",
                  Slot = SpellSlot.R,
                  CastRange = 425f,
                  Delay = 250f,
-                 HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                 HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                  FromObject = new [] { "Ekko_Base_R_TrailEnd" },
                  MissileSpeed = int.MaxValue
              });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisehumanq",
                 ChampionName = "elise",
@@ -1070,18 +1075,18 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisespiderqcast",
                 ChampionName = "elise",
                 Slot = SpellSlot.Q,
                 CastRange = 475f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisehumanw",
                 ChampionName = "elise",
@@ -1092,7 +1097,7 @@ namespace Activator
                 MissileSpeed = 5000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisespiderw",
                 ChampionName = "elise",
@@ -1103,19 +1108,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisehumane",
                 ChampionName = "elise",
                 Slot = SpellSlot.E,
                 CastRange = 1075f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileName = "elisehumane",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisespidereinitial",
                 ChampionName = "elise",
@@ -1126,7 +1131,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisespideredescent",
                 ChampionName = "elise",
@@ -1137,7 +1142,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "eliser",
                 ChampionName = "elise",
@@ -1148,7 +1153,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "elisespiderr",
                 ChampionName = "elise",
@@ -1159,7 +1164,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "evelynnq",
                 ChampionName = "evelynn",
@@ -1170,7 +1175,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "evelynnw",
                 ChampionName = "evelynn",
@@ -1181,7 +1186,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "evelynne",
                 ChampionName = "evelynn",
@@ -1192,7 +1197,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "evelynnr",
                 ChampionName = "evelynn",
@@ -1202,27 +1207,27 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "evelynnr",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ezrealmysticshot",
                 ChampionName = "ezreal",
                 Slot = SpellSlot.Q,
                 CastRange = 1150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger  },
+                HitType = new[] { Handlers.HitType.Danger  },
                 MissileName = "ezrealmysticshotmissile",
                 ExtraMissileNames = new[] { "ezrealmysticshotpulsemissile" },
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ezrealessenceflux",
                 ChampionName = "ezreal",
@@ -1234,7 +1239,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ezrealessencemissle",
                 ChampionName = "ezreal",
@@ -1245,7 +1250,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ezrealarcaneshift",
                 ChampionName = "ezreal",
@@ -1256,7 +1261,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ezrealtrueshotbarrage",
                 ChampionName = "ezreal",
@@ -1264,23 +1269,23 @@ namespace Activator
                 CastRange = 20000f,
                 Global = true,
                 Delay = 1000f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "ezrealtrueshotbarrage",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "terrify",
                 ChampionName = "fiddlesticks",
                 Slot = SpellSlot.Q,
                 CastRange = 575f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "drain",
                 ChampionName = "fiddlesticks",
@@ -1291,29 +1296,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fiddlesticksdarkwind",
                 ChampionName = "fiddlesticks",
                 Slot = SpellSlot.E,
                 CastRange = 750f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "crowstorm",
                 ChampionName = "fiddlesticks",
                 Slot = SpellSlot.R,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.ForceExhaust },
+                HitType = new[] { Handlers.HitType.ForceExhaust },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fioraq",
                 ChampionName = "fiora",
@@ -1324,18 +1329,18 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fioraw",
                 ChampionName = "fiora",
                 Slot = SpellSlot.W,
                 CastRange = 750f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fiorae",
                 ChampionName = "fiora",
@@ -1346,7 +1351,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fiorar",
                 ChampionName = "fiora",
@@ -1357,7 +1362,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzpiercingstrike",
                 ChampionName = "fizz",
@@ -1368,7 +1373,7 @@ namespace Activator
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzseastonepassive",
                 ChampionName = "fizz",
@@ -1379,64 +1384,64 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzjump",
                 ChampionName = "fizz",
                 Slot = SpellSlot.E,
                 CastRange = 450f,
                 Delay = 700f,
-                HitType = new[] { global::Activator.HitType.CrowdControl  },
+                HitType = new[] { Handlers.HitType.CrowdControl  },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzjumpbuffer",
                 ChampionName = "fizz",
                 Slot = SpellSlot.E,
                 CastRange = 330f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzjumptwo",
                 ChampionName = "fizz",
                 Slot = SpellSlot.E,
                 CastRange = 270f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue 
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fizzmarinerdoom",
                 ChampionName = "fizz",
                 Slot = SpellSlot.R,
                 CastRange = 1275f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "fizzmarinerdoommissile",
                 MissileSpeed = 1350
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "galioresolutesmite",
                 ChampionName = "galio",
                 Slot = SpellSlot.Q,
                 CastRange = 1040f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "galioresolutesmite",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "galiobulwark",
                 ChampionName = "galio",
@@ -1447,7 +1452,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "galiorighteousgust",
                 ChampionName = "galio",
@@ -1459,7 +1464,7 @@ namespace Activator
                 MissileSpeed = 1300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "galioidolofdurand",
                 ChampionName = "galio",
@@ -1469,14 +1474,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gangplankqwrapper",
                 ChampionName = "gangplank",
@@ -1487,7 +1492,7 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gangplankqproceed",
                 ChampionName = "gangplank",
@@ -1498,7 +1503,7 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gangplankw",
                 ChampionName = "gangplank",
@@ -1509,7 +1514,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gangplanke",
                 ChampionName = "gangplank",
@@ -1520,7 +1525,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gangplankr",
                 ChampionName = "gangplank",
@@ -1532,7 +1537,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "garenq",
                 ChampionName = "garen",
@@ -1543,56 +1548,56 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "garenqattack",
                 ChampionName = "garen",
                 Slot = SpellSlot.Q,
                 CastRange = 350f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gnarq",
                 ChampionName = "gnar",
                 Slot = SpellSlot.Q,
                 CastRange = 1185f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 2400,
                 MissileName = "gnarqmissile",
                 ExtraMissileNames = new[] { "gnarqmissilereturn" }
             });
 
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gnarbigq",
                 ChampionName = "gnar",
                 Slot = SpellSlot.Q,
                 CastRange = 1150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 2000,
                 MissileName = "gnarbigqmissile"
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gnarbigw",
                 ChampionName = "gnar",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 600f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gnarult",
                 ChampionName = "gnar",
@@ -1602,14 +1607,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
 
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "garenw",
                 ChampionName = "garen",
@@ -1620,7 +1625,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "garene",
                 ChampionName = "garen",
@@ -1631,18 +1636,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "garenr",
                 ChampionName = "garen",
                 Slot = SpellSlot.R,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gragasq",
                 ChampionName = "gragas",
@@ -1654,7 +1659,7 @@ namespace Activator
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gragasqtoggle",
                 ChampionName = "gragas",
@@ -1665,7 +1670,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gragasw",
                 ChampionName = "gragas",
@@ -1676,31 +1681,31 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gragase",
                 ChampionName = "gragas",
                 Slot = SpellSlot.E,
                 CastRange = 600f,
                 Delay = 200f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "gragase",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gragasr",
                 ChampionName = "gragas",
                 Slot = SpellSlot.R,
                 CastRange = 1150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "gragasrboom",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gravesclustershot",
                 ChampionName = "graves",
@@ -1712,7 +1717,7 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gravessmokegrenade",
                 ChampionName = "graves",
@@ -1723,18 +1728,18 @@ namespace Activator
                 MissileSpeed = 1650
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gravessmokegrenadeboom",
                 ChampionName = "graves",
                 Slot = SpellSlot.W,
                 CastRange = 1100f, // 950 + Radius
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1350
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "gravesmove",
                 ChampionName = "graves",
@@ -1745,19 +1750,19 @@ namespace Activator
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "graveschargeshot",
                 ChampionName = "graves",
                 Slot = SpellSlot.R,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "graveschargeshotshot",
                 MissileSpeed = 2100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hecarimrapidslash",
                 ChampionName = "hecarim",
@@ -1768,7 +1773,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hecarimw",
                 ChampionName = "hecarim",
@@ -1779,7 +1784,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hecarimramp",
                 ChampionName = "hecarim",
@@ -1790,7 +1795,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hecarimult",
                 ChampionName = "hecarim",
@@ -1800,13 +1805,13 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "heimerdingerq",
                 ChampionName = "heimerdinger",
@@ -1817,7 +1822,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "heimerdingerw",
                 ChampionName = "heimerdinger",
@@ -1828,19 +1833,19 @@ namespace Activator
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "heimerdingere",
                 ChampionName = "heimerdinger",
                 Slot = SpellSlot.E,
                 CastRange = 1025f, // 925 + Radius
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "heimerdingerespell",
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "heimerdingerr",
                 ChampionName = "heimerdinger",
@@ -1851,18 +1856,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "heimerdingereult",
                 ChampionName = "heimerdinger",
                 Slot = SpellSlot.E,
                 CastRange = 1250f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ireliagatotsu",
                 ChampionName = "irelia",
@@ -1873,7 +1878,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ireliahitenstyle",
                 ChampionName = "irelia",
@@ -1884,18 +1889,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ireliaequilibriumstrike",
                 ChampionName = "irelia",
                 Slot = SpellSlot.E,
                 CastRange = 450f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ireliatranscendentblades",
                 ChampionName = "irelia",
@@ -1907,29 +1912,29 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "howlinggale",
                 ChampionName = "janna",
                 Slot = SpellSlot.Q,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sowthewind",
                 ChampionName = "janna",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "eyeofthestorm",
                 ChampionName = "janna",
@@ -1940,41 +1945,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reapthewhirlwind",
                 ChampionName = "janna",
                 Slot = SpellSlot.R,
                 CastRange = 725f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jarvanivdragonstrike",
                 ChampionName = "jarvaniv",
                 Slot = SpellSlot.Q,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jarvanivgoldenaegis",
                 ChampionName = "jarvaniv",
                 Slot = SpellSlot.W,
                 CastRange = 0f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jarvanivdemacianstandard",
                 ChampionName = "jarvaniv",
@@ -1986,29 +1991,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jarvanivcataclysm",
                 ChampionName = "jarvaniv",
                 Slot = SpellSlot.R,
                 CastRange = 650f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaxleapstrike",
                 ChampionName = "jax",
                 Slot = SpellSlot.Q,
                 CastRange = 210f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaxempowertwo",
                 ChampionName = "jax",
@@ -2019,7 +2024,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaxrelentlessasssault",
                 ChampionName = "jax",
@@ -2030,30 +2035,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycetotheskies",
                 ChampionName = "jayce",
                 Slot = SpellSlot.Q,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jayceshockblast",
                 ChampionName = "jayce",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileName = "jayceshockblastmis",
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycestaticfield",
                 ChampionName = "jayce",
@@ -2064,7 +2069,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycehypercharge",
                 ChampionName = "jayce",
@@ -2075,18 +2080,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycethunderingblow",
                 ChampionName = "jayce",
                 Slot = SpellSlot.E,
                 CastRange = 300f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jayceaccelerationgate",
                 ChampionName = "jayce",
@@ -2097,7 +2102,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycestancehtg",
                 ChampionName = "jayce",
@@ -2108,7 +2113,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jaycestancegth",
                 ChampionName = "jayce",
@@ -2119,7 +2124,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jinxq",
                 ChampionName = "jinx",
@@ -2130,41 +2135,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jinxw",
                 ChampionName = "jinx",
                 Slot = SpellSlot.W,
                 CastRange = 1550f,
                 Delay = 550f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "jinxwmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jinxwmissle",
                 ChampionName = "jinx",
                 Slot = SpellSlot.W,
                 CastRange = 1550f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jinxe",
                 ChampionName = "jinx",
                 Slot = SpellSlot.E,
                 CastRange = 900f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jinxr",
                 ChampionName = "jinx",
@@ -2174,34 +2179,34 @@ namespace Activator
                 Delay = 600f,
                 MissileName = "jinxr",
                 ExtraMissileNames = new [] { "jinxrwrapper" },
-                HitType = new [] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new [] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = 1700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "karmaq",
                 ChampionName = "karma",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "karmaqmissile",
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "karmaspiritbind",
                 ChampionName = "karma",
                 Slot = SpellSlot.W,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "karmasolkimshield",
                 ChampionName = "karma",
@@ -2212,7 +2217,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "karmamantra",
                 ChampionName = "karma",
@@ -2223,7 +2228,7 @@ namespace Activator
                 MissileSpeed = 1300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "laywaste",
                 ChampionName = "karthus",
@@ -2238,7 +2243,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "wallofpain",
                 ChampionName = "karthus",
@@ -2249,7 +2254,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "defile",
                 ChampionName = "karthus",
@@ -2260,7 +2265,7 @@ namespace Activator
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fallenone",
                 ChampionName = "karthus",
@@ -2272,18 +2277,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nulllance",
                 ChampionName = "kassadin",
                 Slot = SpellSlot.Q,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "netherblade",
                 ChampionName = "kassadin",
@@ -2294,18 +2299,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "forcepulse",
                 ChampionName = "kassadin",
                 Slot = SpellSlot.E,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "riftwalk",
                 ChampionName = "kassadin",
@@ -2317,7 +2322,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "katarinaq",
                 ChampionName = "katarina",
@@ -2328,7 +2333,7 @@ namespace Activator
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "katarinaw",
                 ChampionName = "katarina",
@@ -2339,7 +2344,7 @@ namespace Activator
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "katarinae",
                 ChampionName = "katarina",
@@ -2350,29 +2355,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "katarinar",
                 ChampionName = "katarina",
                 Slot = SpellSlot.R,
                 CastRange = 550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.ForceExhaust },
+                HitType = new[] { Handlers.HitType.ForceExhaust },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "judicatorreckoning",
                 ChampionName = "kayle",
                 Slot = SpellSlot.Q,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "judicatordevineblessing",
                 ChampionName = "kayle",
@@ -2383,7 +2388,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "judicatorrighteousfury",
                 ChampionName = "kayle",
@@ -2394,7 +2399,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "judicatorintervention",
                 ChampionName = "kayle",
@@ -2405,7 +2410,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kennenshurikenhurlmissile1",
                 ChampionName = "kennen",
@@ -2417,18 +2422,18 @@ namespace Activator
                 MissileSpeed = 1700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kennenbringthelight",
                 ChampionName = "kennen",
                 Slot = SpellSlot.W,
                 CastRange = 900f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kennenlightningrush",
                 ChampionName = "kennen",
@@ -2439,63 +2444,63 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kennenshurikenstorm",
                 ChampionName = "kennen",
                 Slot = SpellSlot.R,
                 CastRange = 550f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixq",
                 ChampionName = "khazix",
                 Slot = SpellSlot.Q,
                 CastRange = 325f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixqlong",
                 ChampionName = "khazix",
                 Slot = SpellSlot.Q,
                 CastRange = 375f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixw",
                 ChampionName = "khazix",
                 Slot = SpellSlot.W,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "khazixwmissile",
                 MissileSpeed = 81700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixwlong",
                 ChampionName = "khazix",
                 Slot = SpellSlot.W,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixe",
                 ChampionName = "khazix",
@@ -2507,7 +2512,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixelong",
                 ChampionName = "khazix",
@@ -2518,29 +2523,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixr",
                 ChampionName = "khazix",
                 Slot = SpellSlot.R,
                 CastRange = 1000f,
                 Delay = 0f,
-                HitType = new [] { global::Activator.HitType.Stealth },
+                HitType = new [] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "khazixrlong",
                 ChampionName = "khazix",
                 Slot = SpellSlot.R,
                 CastRange = 1000f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kogmawcausticspittle",
                 ChampionName = "kogmaw",
@@ -2551,7 +2556,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kogmawbioarcanbarrage",
                 ChampionName = "kogmaw",
@@ -2562,31 +2567,31 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kogmawvoidooze",
                 ChampionName = "kogmaw",
                 Slot = SpellSlot.E,
                 CastRange = 1150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "kogmawvoidoozemissile",
                 MissileSpeed = 1250
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kogmawlivingartillery",
                 ChampionName = "kogmaw",
                 Slot = SpellSlot.R,
                 CastRange = 2200f,
                 Delay = 1200f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "kogmawlivingartillery",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancchaosorb",
                 ChampionName = "leblanc",
@@ -2597,19 +2602,19 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancslide",
                 ChampionName = "leblanc",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "leblancslide",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblacslidereturn",
                 ChampionName = "leblanc",
@@ -2620,42 +2625,42 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancsoulshackle",
                 ChampionName = "leblanc",
                 Slot = SpellSlot.E,
                 CastRange = 925f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "leblancsoulshackle",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancchaosorbm",
                 ChampionName = "leblanc",
                 Slot = SpellSlot.R,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancslidem",
                 ChampionName = "leblanc",
                 Slot = SpellSlot.R,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "leblancslidem",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancslidereturnm",
                 ChampionName = "leblanc",
@@ -2666,7 +2671,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leblancsoulshacklem",
                 ChampionName = "leblanc",
@@ -2678,19 +2683,19 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkqone",
                 ChampionName = "leesin",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "blindmonkqone",
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkqtwo",
                 ChampionName = "leesin",
@@ -2701,7 +2706,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkwone",
                 ChampionName = "leesin",
@@ -2712,7 +2717,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkwtwo",
                 ChampionName = "leesin",
@@ -2723,7 +2728,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkeone",
                 ChampionName = "leesin",
@@ -2734,18 +2739,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonketwo",
                 ChampionName = "leesin",
                 Slot = SpellSlot.E,
                 CastRange = 350f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindmonkrkick",
                 ChampionName = "leesin",
@@ -2755,24 +2760,24 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leonashieldofdaybreak",
                 ChampionName = "leona",
                 Slot = SpellSlot.Q,
                 CastRange = 215f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leonasolarbarrier",
                 ChampionName = "leona",
@@ -2783,7 +2788,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leonazenithblade",
                 ChampionName = "leona",
@@ -2795,7 +2800,7 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "leonasolarflare",
                 ChampionName = "leona",
@@ -2805,37 +2810,37 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "leonasolarflare",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lissandraq",
                 ChampionName = "lissandra",
                 Slot = SpellSlot.Q,
                 CastRange = 725f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "lissandraqmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lissandraw",
                 ChampionName = "lissandra",
                 Slot = SpellSlot.W,
                 CastRange = 450f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lissandrae",
                 ChampionName = "lissandra",
@@ -2847,30 +2852,30 @@ namespace Activator
                 MissileSpeed = 850
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lissandrar",
                 ChampionName = "lissandra",
                 Slot = SpellSlot.R,
                 CastRange = 550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lucianq",
                 ChampionName = "lucian",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "lucianq",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lucianw",
                 ChampionName = "lucian",
@@ -2882,7 +2887,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luciane",
                 ChampionName = "lucian",
@@ -2893,43 +2898,43 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lucianr",
                 ChampionName = "lucian",
                 Slot = SpellSlot.R,
                 CastRange = 1400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName  = "lucianrmissileoffhand",
                 ExtraMissileNames = new[] { "lucianrmissile" },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luluq",
                 ChampionName = "lulu",
                 Slot = SpellSlot.Q,
                 CastRange = 925f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "luluqmissile",
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luluw",
                 ChampionName = "lulu",
                 Slot = SpellSlot.W,
                 CastRange = 650f,
                 Delay = 640f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lulue",
                 ChampionName = "lulu",
@@ -2940,30 +2945,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "lulur",
                 ChampionName = "lulu",
                 Slot = SpellSlot.R,
                 CastRange = 900f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luxlightbinding",
                 ChampionName = "lux",
                 Slot = SpellSlot.Q,
                 CastRange = 1300f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "luxlightbindingmis",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luxprismaticwave",
                 ChampionName = "lux",
@@ -2974,7 +2979,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luxlightstrikekugel",
                 ChampionName = "lux",
@@ -2986,43 +2991,43 @@ namespace Activator
                 MissileSpeed = 1300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luxlightstriketoggle",
                 ChampionName = "lux",
                 Slot = SpellSlot.E,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "luxmalicecannon",
                 ChampionName = "lux",
                 Slot = SpellSlot.R,
                 CastRange = 3340f,
                 Delay = 1750f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "luxmalicecannonmis",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kalistamysticshot",
                 ChampionName = "kalista",
                 Slot = SpellSlot.Q,
                 CastRange = 1200f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "kalistamysticshotmis",
                 ExtraMissileNames = new[] { "kalistamysticshotmistrue" },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kalistaw",
                 ChampionName = "kalista",
@@ -3033,7 +3038,7 @@ namespace Activator
                 MissileSpeed = 200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "kalistaexpungewrapper",
                 ChampionName = "kalista",
@@ -3044,18 +3049,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "seismicshard",
                 ChampionName = "malphite",
                 Slot = SpellSlot.Q,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "obduracy",
                 ChampionName = "malphite",
@@ -3066,18 +3071,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "landslide",
                 ChampionName = "malphite",
                 Slot = SpellSlot.E,
                 CastRange = 400f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ufslash",
                 ChampionName = "malphite",
@@ -3087,26 +3092,26 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "ufslash",
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "alzaharcallofthevoid",
                 ChampionName = "malzahar",
                 Slot = SpellSlot.Q,
                 CastRange = 900f,
                 Delay = 600f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "alzaharcallofthevoid",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "alzaharnullzone",
                 ChampionName = "malzahar",
@@ -3117,18 +3122,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "alzaharmaleficvisions",
                 ChampionName = "malzahar",
                 Slot = SpellSlot.E,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "alzaharnethergrasp",
                 ChampionName = "malzahar",
@@ -3138,46 +3143,46 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "maokaitrunkline",
                 ChampionName = "maokai",
                 Slot = SpellSlot.Q,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "maokaiunstablegrowth",
                 ChampionName = "maokai",
                 Slot = SpellSlot.W,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "maokaisapling2",
                 ChampionName = "maokai",
                 Slot = SpellSlot.E,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "maokaidrain3",
                 ChampionName = "maokai",
@@ -3188,7 +3193,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "alphastrike",
                 ChampionName = "masteryi",
@@ -3199,7 +3204,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "meditate",
                 ChampionName = "masteryi",
@@ -3210,7 +3215,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "wujustyle",
                 ChampionName = "masteryi",
@@ -3221,7 +3226,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "highlander",
                 ChampionName = "masteryi",
@@ -3232,7 +3237,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "missfortunericochetshot",
                 ChampionName = "missfortune",
@@ -3243,7 +3248,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "missfortuneviciousstrikes",
                 ChampionName = "missfortune",
@@ -3254,7 +3259,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "missfortunescattershot",
                 ChampionName = "missfortune",
@@ -3265,7 +3270,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "missfortunebullettime",
                 ChampionName = "missfortune",
@@ -3276,7 +3281,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingdoubleattack",
                 ChampionName = "monkeyking",
@@ -3287,18 +3292,18 @@ namespace Activator
                 MissileSpeed = 20
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingdecoy",
                 ChampionName = "monkeyking",
                 Slot = SpellSlot.W,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingdecoyswipe",
                 ChampionName = "monkeyking",
@@ -3309,7 +3314,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingnimbus",
                 ChampionName = "monkeyking",
@@ -3320,7 +3325,7 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingspintowin",
                 ChampionName = "monkeyking",
@@ -3330,13 +3335,13 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "monkeykingspintowinleave",
                 ChampionName = "monkeyking",
@@ -3347,7 +3352,7 @@ namespace Activator
                 MissileSpeed = 700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "mordekaisermaceofspades",
                 ChampionName = "mordekaiser",
@@ -3358,7 +3363,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "mordekaisercreepindeathcast",
                 ChampionName = "mordekaiser",
@@ -3369,41 +3374,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "mordekaisersyphoneofdestruction",
                 ChampionName = "mordekaiser",
                 Slot = SpellSlot.E,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "mordekaiserchildrenofthegrave",
                 ChampionName = "mordekaiser",
                 Slot = SpellSlot.R,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "darkbindingmissile",
                 ChampionName = "morgana",
                 Slot = SpellSlot.Q,
                 CastRange = 1175f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "darkbindingmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tormentedsoil",
                 ChampionName = "morgana",
@@ -3414,7 +3419,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blackshield",
                 ChampionName = "morgana",
@@ -3425,30 +3430,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "soulshackles",
                 ChampionName = "morgana",
                 Slot = SpellSlot.R,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "namiq",
                 ChampionName = "nami",
                 Slot = SpellSlot.Q,
                 CastRange = 875f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "namiqmissile",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "namiw",
                 ChampionName = "nami",
@@ -3459,52 +3464,52 @@ namespace Activator
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "namie",
                 ChampionName = "nami",
                 Slot = SpellSlot.E,
                 CastRange = 0f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "namir",
                 ChampionName = "nami",
                 Slot = SpellSlot.R,
                 CastRange = 2550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileName = "namirmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nasusq",
                 ChampionName = "nasus",
                 Slot = SpellSlot.Q,
                 CastRange = 450f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nasusw",
                 ChampionName = "nasus",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nasuse",
                 ChampionName = "nasus",
@@ -3515,7 +3520,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nasusr",
                 ChampionName = "nasus",
@@ -3526,19 +3531,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nautilusanchordrag",
                 ChampionName = "nautilus",
                 Slot = SpellSlot.Q,
                 CastRange = 1080f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileName = "nautilusanchordragmissile",
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nautiluspiercinggaze",
                 ChampionName = "nautilus",
@@ -3549,18 +3554,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nautilussplashzone",
                 ChampionName = "nautilus",
                 Slot = SpellSlot.E,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nautilusgandline",
                 ChampionName = "nautilus",
@@ -3571,30 +3576,30 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "javelintoss",
                 ChampionName = "nidalee",
                 Slot = SpellSlot.Q,
                 CastRange = 1500f,
                 Delay = 125f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "javelintoss",
                 MissileSpeed = 1300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "takedown",
                 ChampionName = "nidalee",
                 Slot = SpellSlot.Q,
                 CastRange = 150f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bushwhack",
                 ChampionName = "nidalee",
@@ -3605,7 +3610,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pounce",
                 ChampionName = "nidalee",
@@ -3616,7 +3621,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "primalsurge",
                 ChampionName = "nidalee",
@@ -3627,18 +3632,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "swipe",
                 ChampionName = "nidalee",
                 Slot = SpellSlot.E,
                 CastRange = 350f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "aspectofthecougar",
                 ChampionName = "nidalee",
@@ -3649,7 +3654,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nocturneduskbringer",
                 ChampionName = "nocturne",
@@ -3660,7 +3665,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nocturneshroudofdarkness",
                 ChampionName = "nocturne",
@@ -3671,18 +3676,18 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nocturneunspeakablehorror",
                 ChampionName = "nocturne",
                 Slot = SpellSlot.E,
                 CastRange = 350f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "nocturneparanoia",
                 ChampionName = "nocturne",
@@ -3694,7 +3699,7 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "consume",
                 ChampionName = "nunu",
@@ -3705,7 +3710,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bloodboil",
                 ChampionName = "nunu",
@@ -3716,18 +3721,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "iceblast",
                 ChampionName = "nunu",
                 Slot = SpellSlot.E,
                 CastRange = 550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "absolutezero",
                 ChampionName = "nunu",
@@ -3738,19 +3743,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "olafaxethrowcast",
                 ChampionName = "olaf",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "olafaxethrow",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "olaffrenziedstrikes",
                 ChampionName = "olaf",
@@ -3761,18 +3766,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "olafrecklessstrike",
                 ChampionName = "olaf",
                 Slot = SpellSlot.E,
                 CastRange = 325f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "olafragnarok",
                 ChampionName = "olaf",
@@ -3783,7 +3788,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "orianaizunacommand",
                 ChampionName = "orianna",
@@ -3796,20 +3801,20 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "orianadissonancecommand",
                 ChampionName = "orianna",
                 Slot = SpellSlot.W,
                 CastRange = 400f,
                 Delay = 350f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "orianadissonancecommand",
                 FromObject = new[] { "yomu_ring" },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "orianaredactcommand",
                 ChampionName = "orianna",
@@ -3822,7 +3827,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "orianadetonatecommand",
                 ChampionName = "orianna",
@@ -3832,15 +3837,15 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "orianadetonatecommand",
                 FromObject = new[] { "yomu_ring" },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pantheonq",
                 ChampionName = "pantheon",
@@ -3851,18 +3856,18 @@ namespace Activator
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pantheonw",
                 ChampionName = "pantheon",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pantheone",
                 ChampionName = "pantheon",
@@ -3873,7 +3878,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pantheonrjump",
                 ChampionName = "pantheon",
@@ -3884,7 +3889,7 @@ namespace Activator
                 MissileSpeed = 3000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pantheonrfall",
                 ChampionName = "pantheon",
@@ -3895,18 +3900,18 @@ namespace Activator
                 MissileSpeed = 3000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "poppydevastatingblow",
                 ChampionName = "poppy",
                 Slot = SpellSlot.Q,
                 CastRange = 300f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "poppyparagonofdemacia",
                 ChampionName = "poppy",
@@ -3917,41 +3922,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "poppyheroiccharge",
                 ChampionName = "poppy",
                 Slot = SpellSlot.E,
                 CastRange = 525f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "poppydiplomaticimmunity",
                 ChampionName = "poppy",
                 Slot = SpellSlot.R,
                 CastRange = 900f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl,  },
+                HitType = new[] { Handlers.HitType.CrowdControl,  },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "quinnq",
                 ChampionName = "quinn",
                 Slot = SpellSlot.Q,
                 CastRange = 1025f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "quinnqmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "quinnw",
                 ChampionName = "quinn",
@@ -3962,18 +3967,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "quinne",
                 ChampionName = "quinn",
                 Slot = SpellSlot.E,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 775
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "quinnr",
                 ChampionName = "quinn",
@@ -3984,7 +3989,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "quinnrfinale",
                 ChampionName = "quinn",
@@ -3995,7 +4000,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "powerball",
                 ChampionName = "rammus",
@@ -4006,7 +4011,7 @@ namespace Activator
                 MissileSpeed = 775
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "defensiveballcurl",
                 ChampionName = "rammus",
@@ -4017,18 +4022,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "puncturingtaunt",
                 ChampionName = "rammus",
                 Slot = SpellSlot.E,
                 CastRange = 325f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tremors2",
                 ChampionName = "rammus",
@@ -4039,7 +4044,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "renektoncleave",
                 ChampionName = "renekton",
@@ -4050,18 +4055,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "renektonpreexecute",
                 ChampionName = "renekton",
                 Slot = SpellSlot.W,
                 CastRange = 275f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "renektonsliceanddice",
                 ChampionName = "renekton",
@@ -4072,7 +4077,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "renektonreignofthetyrant",
                 ChampionName = "renekton",
@@ -4083,18 +4088,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rengarq",
                 ChampionName = "rengar",
                 Slot = SpellSlot.Q,
                 CastRange = 275f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rengarw",
                 ChampionName = "rengar",
@@ -4105,19 +4110,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rengare",
                 ChampionName = "rengar",
                 Slot = SpellSlot.E,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "rengarefinal",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rengarr",
                 ChampionName = "rengar",
@@ -4128,7 +4133,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaiq",
                 ChampionName = "reksai",
@@ -4139,7 +4144,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaiqburrowed",
                 ChampionName = "reksai",
@@ -4151,7 +4156,7 @@ namespace Activator
                 MissileSpeed = 1950
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaiw",
                 ChampionName = "reksai",
@@ -4162,18 +4167,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaiwburrowed",
                 ChampionName = "reksai",
                 Slot = SpellSlot.W,
                 CastRange = 200f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaie",
                 ChampionName = "reksai",
@@ -4184,7 +4189,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksaieburrowed",
                 ChampionName = "reksai",
@@ -4195,7 +4200,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "reksair",
                 ChampionName = "reksai",
@@ -4206,7 +4211,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "riventricleave",
                 ChampionName = "riven",
@@ -4217,18 +4222,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rivenmartyr",
                 ChampionName = "riven",
                 Slot = SpellSlot.W,
                 CastRange = 260f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rivenfeint",
                 ChampionName = "riven",
@@ -4239,7 +4244,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rivenfengshuiengine",
                 ChampionName = "riven",
@@ -4250,20 +4255,20 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rivenizunablade",
                 ChampionName = "riven",
                 Slot = SpellSlot.R,
                 CastRange = 1075f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "rivenlightsabermissile",
                 ExtraMissileNames = new[] { "rivenlightsabermissileside" },
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rumbleflamethrower",
                 ChampionName = "rumble",
@@ -4274,7 +4279,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rumbleshield",
                 ChampionName = "rumble",
@@ -4285,18 +4290,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rumbegrenade",
                 ChampionName = "rumble",
                 Slot = SpellSlot.E,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "rumblecarpetbomb",
                 ChampionName = "rumble",
@@ -4307,7 +4312,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ryzeq",
                 ChampionName = "ryze",
@@ -4318,18 +4323,18 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ryzew",
                 ChampionName = "ryze",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl , global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl , Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ryzee",
                 ChampionName = "ryze",
@@ -4340,7 +4345,7 @@ namespace Activator
                 MissileSpeed = 1000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ryzer",
                 ChampionName = "ryze",
@@ -4351,19 +4356,19 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sejuaniarcticassault",
                 ChampionName = "sejuani",
                 Slot = SpellSlot.Q,
                 CastRange = 650f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "",
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sejuaninorthernwinds",
                 ChampionName = "sejuani",
@@ -4374,18 +4379,18 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sejuaniwintersclaw",
                 ChampionName = "sejuani",
                 Slot = SpellSlot.E,
                 CastRange = 550f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sejuaniglacialprisoncast",
                 ChampionName = "sejuani",
@@ -4395,47 +4400,47 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "sejuaniglacialprison",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "deceive",
                 ChampionName = "shaco",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "jackinthebox",
                 ChampionName = "shaco",
                 Slot = SpellSlot.W,
                 CastRange = 0f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "twoshivpoison",
                 ChampionName = "shaco",
                 Slot = SpellSlot.E,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hallucinatefull",
                 ChampionName = "shaco",
@@ -4446,7 +4451,7 @@ namespace Activator
                 MissileSpeed = 395
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shenvorpalstar",
                 ChampionName = "shen",
@@ -4457,7 +4462,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shenfeint",
                 ChampionName = "shen",
@@ -4468,19 +4473,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shenshadowdash",
                 ChampionName = "shen",
                 Slot = SpellSlot.E,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "shenshadowdash",
                 MissileSpeed = 1250
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shenstandunited",
                 ChampionName = "shen",
@@ -4491,7 +4496,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanadoubleattack",
                 ChampionName = "shyvana",
@@ -4502,7 +4507,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanadoubleattackdragon",
                 ChampionName = "shyvana",
@@ -4513,7 +4518,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanaimmolationauraqw",
                 ChampionName = "shyvana",
@@ -4524,7 +4529,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanaimmolateddragon",
                 ChampionName = "shyvana",
@@ -4535,7 +4540,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanafireball",
                 ChampionName = "shyvana",
@@ -4547,7 +4552,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanafireballdragon2",
                 ChampionName = "shyvana",
@@ -4558,7 +4563,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shyvanatransformcast",
                 ChampionName = "shyvana",
@@ -4568,14 +4573,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl,
-                        global::Activator.HitType.Ultimate
+                        Handlers.HitType.Danger, Handlers.HitType.CrowdControl,
+                        Handlers.HitType.Ultimate
                     },
                 MissileName = "shyvanatransformcast",
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "poisentrail",
                 ChampionName = "singed",
@@ -4586,29 +4591,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "megaadhesive",
                 ChampionName = "singed",
                 Slot = SpellSlot.W,
                 CastRange = 1175f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fling",
                 ChampionName = "singed",
                 Slot = SpellSlot.E,
                 CastRange = 125f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "insanitypotion",
                 ChampionName = "singed",
@@ -4619,18 +4624,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sionq",
                 ChampionName = "sion",
                 Slot = SpellSlot.Q,
                 CastRange = 600f,
                 Delay = 2000f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sionw",
                 ChampionName = "sion",
@@ -4641,19 +4646,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sione",
                 ChampionName = "sion",
                 Slot = SpellSlot.E,
                 CastRange = 725f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "sionemissile",
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sionr",
                 ChampionName = "sion",
@@ -4665,7 +4670,7 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sivirq",
                 ChampionName = "sivir",
@@ -4678,7 +4683,7 @@ namespace Activator
                 MissileSpeed = 1350
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sivirw",
                 ChampionName = "sivir",
@@ -4689,7 +4694,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sivire",
                 ChampionName = "sivir",
@@ -4700,7 +4705,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sivirr",
                 ChampionName = "sivir",
@@ -4711,7 +4716,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "skarnervirulentslash",
                 ChampionName = "skarner",
@@ -4722,7 +4727,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "skarnerexoskeleton",
                 ChampionName = "skarner",
@@ -4733,30 +4738,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "skarnerfracture",
                 ChampionName = "skarner",
                 Slot = SpellSlot.E,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "skarnerfracturemissile",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "skarnerimpale",
                 ChampionName = "skarner",
                 Slot = SpellSlot.R,
                 CastRange = 350f,
                 Delay = 350f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sonaq",
                 ChampionName = "sona",
@@ -4767,7 +4772,7 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sonaw",
                 ChampionName = "sona",
@@ -4778,18 +4783,18 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sonae",
                 ChampionName = "sona",
                 Slot = SpellSlot.E,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sonar",
                 ChampionName = "sona",
@@ -4799,14 +4804,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "sonar",
                 MissileSpeed = 2400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sorakaq",
                 ChampionName = "soraka",
@@ -4818,7 +4823,7 @@ namespace Activator
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sorakaw",
                 ChampionName = "soraka",
@@ -4829,18 +4834,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sorakae",
                 ChampionName = "soraka",
                 Slot = SpellSlot.E,
                 CastRange = 925f,
                 Delay = 1750f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "sorakar",
                 ChampionName = "soraka",
@@ -4851,30 +4856,30 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "swaindecrepify",
                 ChampionName = "swain",
                 Slot = SpellSlot.Q,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "swainshadowgrasp",
                 ChampionName = "swain",
                 Slot = SpellSlot.W,
                 CastRange = 1040f,
                 Delay = 1100f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "swainshadowgrasp",
                 MissileSpeed = int.MaxValue 
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "swaintorment",
                 ChampionName = "swain",
@@ -4885,7 +4890,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "swainmetamorphism",
                 ChampionName = "swain",
@@ -4896,7 +4901,7 @@ namespace Activator
                 MissileSpeed = 950
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "syndraq",
                 ChampionName = "syndra",
@@ -4908,42 +4913,42 @@ namespace Activator
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "syndrawcast",
                 ChampionName = "syndra",
                 Slot = SpellSlot.W,
                 CastRange = 950f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "syndrawcast",
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "syndrae",
                 ChampionName = "syndra",
                 Slot = SpellSlot.E,
                 CastRange = 950f,
                 Delay = 300f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "syndrae",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "syndrar",
                 ChampionName = "syndra",
                 Slot = SpellSlot.R,
                 CastRange = 675f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = 1250
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "talonnoxiandiplomacy",
                 ChampionName = "talon",
@@ -4954,41 +4959,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "talonrake",
                 ChampionName = "talon",
                 Slot = SpellSlot.W,
                 CastRange = 750f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "talonrakemissileone",
                 MissileSpeed = 2300
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "taloncutthroat",
                 ChampionName = "talon",
                 Slot = SpellSlot.E,
                 CastRange = 750f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "talonshadowassault",
                 ChampionName = "talon",
                 Slot = SpellSlot.R,
                 CastRange = 750f,
                 Delay = 260f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "imbue",
                 ChampionName = "taric",
@@ -4999,7 +5004,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "shatter",
                 ChampionName = "taric",
@@ -5010,40 +5015,40 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "dazzle",
                 ChampionName = "taric",
                 Slot = SpellSlot.E,
                 CastRange = 625f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tarichammersmash",
                 ChampionName = "taric",
                 Slot = SpellSlot.R,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "blindingdart",
                 ChampionName = "teemo",
                 Slot = SpellSlot.Q,
                 CastRange = 580f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "movequick",
                 ChampionName = "teemo",
@@ -5054,7 +5059,7 @@ namespace Activator
                 MissileSpeed = 943
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "toxicshot",
                 ChampionName = "teemo",
@@ -5065,7 +5070,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bantamtrap",
                 ChampionName = "teemo",
@@ -5076,19 +5081,19 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "threshq",
                 ChampionName = "thresh",
                 Slot = SpellSlot.Q,
                 CastRange = 1175f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger  },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger  },
                 MissileName = "threshqmissile",
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "threshw",
                 ChampionName = "thresh",
@@ -5099,19 +5104,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "threshe",
                 ChampionName = "thresh",
                 Slot = SpellSlot.E,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "threshemissile1",
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "threshrpenta",
                 ChampionName = "thresh",
@@ -5122,7 +5127,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tristanaq",
                 ChampionName = "tristana",
@@ -5133,18 +5138,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tristanaw",
                 ChampionName = "tristana",
                 Slot = SpellSlot.W,
                 CastRange = 900f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1150
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tristanae",
                 ChampionName = "tristana",
@@ -5155,7 +5160,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "tristanar",
                 ChampionName = "tristana",
@@ -5166,7 +5171,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "trundletrollsmash",
                 ChampionName = "trundle",
@@ -5177,7 +5182,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "trundledesecrate",
                 ChampionName = "trundle",
@@ -5188,29 +5193,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "trundlecircle",
                 ChampionName = "trundle",
                 Slot = SpellSlot.E,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "trundlepain",
                 ChampionName = "trundle",
                 Slot = SpellSlot.R,
                 CastRange = 700f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bloodlust",
                 ChampionName = "tryndamere",
@@ -5221,18 +5226,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "mockingshout",
                 ChampionName = "tryndamere",
                 Slot = SpellSlot.W,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "slashcast",
                 ChampionName = "tryndamere",
@@ -5244,7 +5249,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "undyingrage",
                 ChampionName = "tryndamere",
@@ -5255,52 +5260,52 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hideinshadows",
                 ChampionName = "twich",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 450f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "twitchvenomcask",
                 ChampionName = "twich",
                 Slot = SpellSlot.W,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "twitchvenomcaskmissile",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "twitchvenomcaskmissle",
                 ChampionName = "twich",
                 Slot = SpellSlot.W,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "expunge",
                 ChampionName = "twich",
                 Slot = SpellSlot.E,
                 CastRange = 1200f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, },
+                HitType = new[] { Handlers.HitType.Danger, },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "fullautomatic",
                 ChampionName = "twich",
@@ -5311,7 +5316,7 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "wildcards",
                 ChampionName = "twistedfate",
@@ -5323,7 +5328,7 @@ namespace Activator
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "pickacard",
                 ChampionName = "twistedfate",
@@ -5334,29 +5339,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "goldcardpreattack",
                 ChampionName = "twistedfate",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "redcardpreattack",
                 ChampionName = "twistedfate",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bluecardpreattack",
                 ChampionName = "twistedfate",
@@ -5367,7 +5372,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "cardmasterstack",
                 ChampionName = "twistedfate",
@@ -5378,7 +5383,7 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "destiny",
                 ChampionName = "twistedfate",
@@ -5389,7 +5394,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "udyrtigerstance",
                 ChampionName = "udyr",
@@ -5400,7 +5405,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "udyrturtlestance",
                 ChampionName = "udyr",
@@ -5411,18 +5416,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "udyrbearstanceattack",
                 ChampionName = "udyr",
                 Slot = SpellSlot.E,
                 CastRange = 250f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "udyrphoenixstance",
                 ChampionName = "udyr",
@@ -5433,18 +5438,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotheatseekinglineqqmissile",
                 ChampionName = "urgot",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new [] { global::Activator.HitType.Danger,  },
+                HitType = new [] { Handlers.HitType.Danger,  },
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotheatseekingmissile",
                 ChampionName = "urgot",
@@ -5455,7 +5460,7 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotterrorcapacitoractive2",
                 ChampionName = "urgot",
@@ -5466,7 +5471,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotplasmagrenade",
                 ChampionName = "urgot",
@@ -5478,7 +5483,7 @@ namespace Activator
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotplasmagrenadeboom",
                 ChampionName = "urgot",
@@ -5489,30 +5494,30 @@ namespace Activator
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "urgotswap2",
                 ChampionName = "urgot",
                 Slot = SpellSlot.R,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] {  global::Activator.HitType.CrowdControl },
+                HitType = new[] {  Handlers.HitType.CrowdControl },
                 MissileSpeed = 1800
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "varusq",
                 ChampionName = "varus",
                 Slot = SpellSlot.Q,
                 CastRange = 1250f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "varusqmissile",
                 MissileSpeed = 1900
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "varusw",
                 ChampionName = "varus",
@@ -5523,19 +5528,19 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "varuse",
                 ChampionName = "varus",
                 Slot = SpellSlot.E,
                 CastRange = 925f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "varuse",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "varusr",
                 ChampionName = "varus",
@@ -5545,14 +5550,14 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileName = "varusrmissile",
                 MissileSpeed = 1950
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vaynetumble",
                 ChampionName = "vayne",
@@ -5563,7 +5568,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vaynesilverbolts",
                 ChampionName = "vayne",
@@ -5574,41 +5579,41 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vaynecondemnmissile",
                 ChampionName = "vayne",
                 Slot = SpellSlot.E,
                 CastRange = 450f,
                 Delay = 500f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger,  },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger,  },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vayneinquisition",
                 ChampionName = "vayne",
                 Slot = SpellSlot.R,
                 CastRange = 1200f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Stealth },
+                HitType = new[] { Handlers.HitType.Stealth },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "veigarbalefulstrike",
                 ChampionName = "veigar",
                 Slot = SpellSlot.Q,
                 CastRange = 950f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "veigarbalefulstrikemis",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "veigardarkmatter",
                 ChampionName = "veigar",
@@ -5620,64 +5625,64 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "veigareventhorizon",
                 ChampionName = "veigar",
                 Slot = SpellSlot.E,
                 CastRange = 650f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "veigarprimordialburst",
                 ChampionName = "veigar",
                 Slot = SpellSlot.R,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkozq",
                 ChampionName = "velkoz",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 300f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "velkozqmissile",
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkozqmissle",
                 ChampionName = "velkoz",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkozqplitactive",
                 ChampionName = "velkoz",
                 Slot = SpellSlot.Q,
                 CastRange = 1050f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkozw",
                 ChampionName = "velkoz",
@@ -5689,41 +5694,41 @@ namespace Activator
                 MissileSpeed = 1200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkoze",
                 ChampionName = "velkoz",
                 Slot = SpellSlot.E,
                 CastRange = 850f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "velkozemissile",
                 MissileSpeed = 1700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "velkozr",
                 ChampionName = "velkoz",
                 Slot = SpellSlot.R,
                 CastRange = 1575f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Ultimate },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viq",
                 ChampionName = "vi",
                 Slot = SpellSlot.Q,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viw",
                 ChampionName = "vi",
@@ -5734,29 +5739,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vie",
                 ChampionName = "vi",
                 Slot = SpellSlot.E,
                 CastRange = 600f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vir",
                 ChampionName = "vi",
                 Slot = SpellSlot.R,
                 CastRange = 800f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viktorpowertransfer",
                 ChampionName = "viktor",
@@ -5767,30 +5772,30 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viktorgravitonfield",
                 ChampionName = "viktor",
                 Slot = SpellSlot.W,
                 CastRange = 815f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viktordeathray",
                 ChampionName = "viktor",
                 Slot = SpellSlot.E,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileName = "viktordeathraymis",
                 MissileSpeed = 1210
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "viktorchaosstorm",
                 ChampionName = "viktor",
@@ -5800,35 +5805,35 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.CrowdControl, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.Danger
+                        Handlers.HitType.CrowdControl, Handlers.HitType.Ultimate,
+                        Handlers.HitType.Danger
                     },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vladimirtransfusion",
                 ChampionName = "vladimir",
                 Slot = SpellSlot.Q,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vladimirsanguinepool",
                 ChampionName = "vladimir",
                 Slot = SpellSlot.W,
                 CastRange = 350f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vladimirtidesofblood",
                 ChampionName = "vladimir",
@@ -5839,18 +5844,18 @@ namespace Activator
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "vladimirhemoplague",
                 ChampionName = "vladimir",
                 Slot = SpellSlot.R,
                 CastRange = 875f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "volibearq",
                 ChampionName = "volibear",
@@ -5861,29 +5866,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "volibearw",
                 ChampionName = "volibear",
                 Slot = SpellSlot.W,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = 1450
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "volibeare",
                 ChampionName = "volibear",
                 Slot = SpellSlot.E,
                 CastRange = 425f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 825
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "volibearr",
                 ChampionName = "volibear",
@@ -5894,18 +5899,18 @@ namespace Activator
                 MissileSpeed = 825
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hungeringstrike",
                 ChampionName = "warwick",
                 Slot = SpellSlot.Q,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "hunterscall",
                 ChampionName = "warwick",
@@ -5916,7 +5921,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "bloodscent",
                 ChampionName = "warwick",
@@ -5927,7 +5932,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "infiniteduress",
                 ChampionName = "warwick",
@@ -5937,13 +5942,13 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
             
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xeratharcanopulsechargeup",
                 ChampionName = "xerath",
@@ -5954,31 +5959,31 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xeratharcanebarrage2",
                 ChampionName = "xerath",
                 Slot = SpellSlot.W,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "xeratharcanebarrage2",
                 MissileSpeed = 20
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xerathmagespear",
                 ChampionName = "xerath",
                 Slot = SpellSlot.E,
                 CastRange = 1050f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileName = "xerathmagespearmissile",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xerathlocusofpower2",
                 ChampionName = "xerath",
@@ -5989,18 +5994,18 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xenzhaothrust3",
                 ChampionName = "xinzhao",
                 Slot = SpellSlot.Q,
                 CastRange = 400f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xenzhaobattlecry",
                 ChampionName = "xinzhao",
@@ -6011,18 +6016,18 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xenzhaosweep",
                 ChampionName = "xinzhao",
                 Slot = SpellSlot.E,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl, global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "xenzhaoparry",
                 ChampionName = "xinzhao",
@@ -6032,47 +6037,47 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuoqw",
                 ChampionName = "yasuo",
                 Slot = SpellSlot.Q,
                 CastRange = 475f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuoq2w",
                 ChampionName = "yasuo",
                 Slot = SpellSlot.Q,
                 CastRange = 475f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuoq3",
                 ChampionName = "yasuo",
                 Slot = SpellSlot.Q,
                 CastRange = 1000f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "yasuoq3mis",
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuowmovingwall",
                 ChampionName = "yasuo",
@@ -6083,7 +6088,7 @@ namespace Activator
                 MissileSpeed = 500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuodashwrapper",
                 ChampionName = "yasuo",
@@ -6094,7 +6099,7 @@ namespace Activator
                 MissileSpeed = 20
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yasuorknockupcombow",
                 ChampionName = "yasuo",
@@ -6105,7 +6110,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yorickspectral",
                 ChampionName = "yorick",
@@ -6116,18 +6121,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yorickdecayed",
                 ChampionName = "yorick",
                 Slot = SpellSlot.W,
                 CastRange = 600f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yorickravenous",
                 ChampionName = "yorick",
@@ -6138,7 +6143,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "yorickreviveally",
                 ChampionName = "yorick",
@@ -6149,19 +6154,19 @@ namespace Activator
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zacq",
                 ChampionName = "zac",
                 Slot = SpellSlot.Q,
                 CastRange = 550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "zacq",
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zacw",
                 ChampionName = "zac",
@@ -6172,29 +6177,29 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zace",
                 ChampionName = "zac",
                 Slot = SpellSlot.E,
                 CastRange = 1550f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1500
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zacr",
                 ChampionName = "zac",
                 Slot = SpellSlot.R,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zedq",
                 ChampionName = "zed",
@@ -6208,7 +6213,7 @@ namespace Activator
                 MissileSpeed = 1700
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zedw",
                 ChampionName = "zed",
@@ -6219,29 +6224,29 @@ namespace Activator
                 MissileSpeed = 1600
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zede",
                 ChampionName = "zed",
                 Slot = SpellSlot.E,
                 CastRange = 300f,
                 Delay = 0f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zedr",
                 ChampionName = "zed",
                 Slot = SpellSlot.R,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.Danger },
+                HitType = new[] { Handlers.HitType.Danger },
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggsq",
                 ChampionName = "ziggs",
@@ -6254,65 +6259,65 @@ namespace Activator
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggsw",
                 ChampionName = "ziggs",
                 Slot = SpellSlot.W,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "ziggsw",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggswtoggle",
                 ChampionName = "ziggs",
                 Slot = SpellSlot.W,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggse",
                 ChampionName = "ziggs",
                 Slot = SpellSlot.E,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "ziggse",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggse2",
                 ChampionName = "ziggs",
                 Slot = SpellSlot.E,
                 CastRange = 850f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "ziggsr",
                 ChampionName = "ziggs",
                 Slot = SpellSlot.R,
                 CastRange = 2250f,
                 Delay = 1800f,
-                HitType = new[] { global::Activator.HitType.Danger, global::Activator.HitType.Ultimate },
+                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
                 MissileName = "ziggsr",
                 MissileSpeed = 1750
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zileanq",
                 ChampionName = "zilean",
@@ -6324,7 +6329,7 @@ namespace Activator
                 MissileSpeed = 2000
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zileanw",
                 ChampionName = "zilean",
@@ -6335,18 +6340,18 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zileane",
                 ChampionName = "zilean",
                 Slot = SpellSlot.E,
                 CastRange = 700f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileSpeed = 1100
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zileanr",
                 ChampionName = "zilean",
@@ -6357,7 +6362,7 @@ namespace Activator
                 MissileSpeed = int.MaxValue
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zyraqfissure",
                 ChampionName = "zyra",
@@ -6369,7 +6374,7 @@ namespace Activator
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zyraseed",
                 ChampionName = "zyra",
@@ -6380,19 +6385,19 @@ namespace Activator
                 MissileSpeed = 2200
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zyragraspingroots",
                 ChampionName = "zyra",
                 Slot = SpellSlot.E,
                 CastRange = 1100f,
                 Delay = 250f,
-                HitType = new[] { global::Activator.HitType.CrowdControl },
+                HitType = new[] { Handlers.HitType.CrowdControl },
                 MissileName = "zyragraspingroots",
                 MissileSpeed = 1400
             });
 
-            spells.Add(new spelldata
+            Spells.Add(new SpellData
             {
                 SDataName = "zyrabramblezone",
                 ChampionName = "zyra",
@@ -6402,24 +6407,16 @@ namespace Activator
                 HitType =
                     new[]
                     {
-                        global::Activator.HitType.Danger, global::Activator.HitType.Ultimate,
-                        global::Activator.HitType.CrowdControl
+                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
+                        Handlers.HitType.CrowdControl
                     },
                 MissileSpeed = int.MaxValue
             });
         }
 
-        public static List<item> items = new List<item>();
-        public static List<item> activeitems = new List<item>(); 
-        public static List<spell> mypells = new List<spell>();
-        public static List<summoner> summoners = new List<summoner>();
-        public static List<spelldata> spells = new List<spelldata>();
-
-        public static Dictionary<SpellDamageDelegate, SpellSlot> damagelib = new Dictionary<SpellDamageDelegate, SpellSlot>();
-
-        public static spelldata GetByMissileName(string missilename)
+        public static SpellData GetByMissileName(string missilename)
         {
-            foreach (var sdata in spells)
+            foreach (var sdata in Spells)
             {
                 if (sdata.MissileName != null && sdata.MissileName.ToLower() == missilename ||
                     sdata.ExtraMissileNames != null && sdata.ExtraMissileNames.Contains(missilename))

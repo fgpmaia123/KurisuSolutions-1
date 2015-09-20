@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Heals
 {
-    class sonaw : spell
+    class sonaw : CoreSpell
     {
         internal override string Name
         {

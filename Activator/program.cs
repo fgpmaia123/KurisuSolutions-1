@@ -13,11 +13,15 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Collections.Generic;
+using Activator.Handlers;
+using Activator.Data;
+using Activator.Handlers;
 using Activator.Items;
 using Activator.Spells;
 using Activator.Summoners;
 using LeagueSharp;
 using LeagueSharp.Common;
+using ObjectHandler = Activator.Handlers.ObjectHandler;
 
 namespace Activator
 {
@@ -36,7 +40,7 @@ namespace Activator
 
         public static bool UseEnemyMenu, UseAllyMenu;
         public static System.Version Version;
-        public static List<champion> Heroes = new List<champion>(); 
+        public static List<Champion> Heroes = new List<Champion>(); 
 
         private static void Main(string[] args)
         {
@@ -46,110 +50,117 @@ namespace Activator
 
         private static void Game_OnGameLoad(EventArgs args)
         {
-            Player = ObjectManager.Player;
-            MapId = (int) Utility.Map.GetMap().Type;
-
-            GetSmiteSlot();
-            GetTroysInGame();
-            GetHeroesInGame();
-            GetComboDamage();
-
-            Origin = new Menu("Activator", "activator", true);
-
-            var cmenu = new Menu("Cleansers", "cleansers");
-            SubMenu(cmenu, false);
-            GetItemGroup("Items.Cleansers").ForEach(t => NewItem((item)NewInstance(t), cmenu));
-            Origin.AddSubMenu(cmenu);
-
-            var dmenu = new Menu("Defensives", "dmenu");
-            SubMenu(dmenu, false);
-            GetItemGroup("Items.Defensives").ForEach(t => NewItem((item) NewInstance(t), dmenu));
-            Origin.AddSubMenu(dmenu);
-
-            var smenu = new Menu("Summoners", "smenu");
-            SubMenu(smenu, true, true);
-            GetItemGroup("Summoners").ForEach(t => NewSummoner((summoner) NewInstance(t), smenu));
-            Origin.AddSubMenu(smenu);
-
-            var omenu = new Menu("Offensives", "omenu");
-            SubMenu(omenu, true);
-            GetItemGroup("Items.Offensives").ForEach(t => NewItem((item) NewInstance(t), omenu));
-            Origin.AddSubMenu(omenu);
-
-            var imenu = new Menu("Consumables", "imenu");
-            GetItemGroup("Items.Consumables").ForEach(t => NewItem((item) NewInstance(t), imenu));
-            Origin.AddSubMenu(imenu);
-
-            var amenu = new Menu("Auto Spells", "amenu");
-            SubMenu(amenu, false);
-            GetItemGroup("Spells.Evaders").ForEach(t => NewSpell((spell) NewInstance(t), amenu));
-            GetItemGroup("Spells.Shields").ForEach(t => NewSpell((spell) NewInstance(t), amenu));
-            GetItemGroup("Spells.Health").ForEach(t => NewSpell((spell) NewInstance(t), amenu));
-            GetItemGroup("Spells.Slows").ForEach(t => NewSpell((spell) NewInstance(t), amenu));
-            GetItemGroup("Spells.Heals").ForEach(t => NewSpell((spell) NewInstance(t), amenu));
-            Origin.AddSubMenu(amenu);
-
-            var zmenu = new Menu("Misc/Settings", "settings");
-
-            if (SmiteInGame)
+            try
             {
-                var ddmenu = new Menu("Drawings", "drawings");
-                ddmenu.AddItem(new MenuItem("drawfill", "Draw Smite Fill")).SetValue(true);
-                ddmenu.AddItem(new MenuItem("drawsmite", "Draw Smite Range")).SetValue(true);
-                zmenu.AddSubMenu(ddmenu);
-            }
+                Player = ObjectManager.Player;
+                MapId = (int) Utility.Map.GetMap().Type;
 
-            zmenu.AddItem(new MenuItem("acdebug", "Debug")).SetValue(false);
-            zmenu.AddItem(new MenuItem("evade", "Evade Integration")).SetValue(true);
-            zmenu.AddItem(new MenuItem("healthp", "Ally Priority:")).SetValue(new StringList(new[] { "Low HP", "Most AD/AP", "Most HP" }, 1));
-            zmenu.AddItem(new MenuItem("usecombo", "Combo (active)")).SetValue(new KeyBind(32, KeyBindType.Press, true));
+                GetSmiteSlot();
+                GetTroysInGame();
+                GetHeroesInGame();
+                GetComboDamage();
 
-            var uumenu = new Menu("Evade Menu", "evadem");
-            LoadEvadeMenu(uumenu);
-            zmenu.AddSubMenu(uumenu);
+                Origin = new Menu("Activator", "activator", true);
 
-            Origin.AddSubMenu(zmenu);
+                var cmenu = new Menu("Cleansers", "cleansers");
+                SubMenu(cmenu, false);
+                GetItemGroup("Items.Cleansers").ForEach(t => NewItem((CoreItem)NewInstance(t), cmenu));
+                Origin.AddSubMenu(cmenu);
 
-            Origin.AddToMainMenu();
+                var dmenu = new Menu("Defensives", "dmenu");
+                SubMenu(dmenu, false);
+                GetItemGroup("Items.Defensives").ForEach(t => NewItem((CoreItem) NewInstance(t), dmenu));
+                Origin.AddSubMenu(dmenu);
 
-            // draw hanlder
-            drawings.init();
+                var smenu = new Menu("Summoners", "smenu");
+                SubMenu(smenu, true, true);
+                GetItemGroup("Summoners").ForEach(t => NewSummoner((CoreSum) NewInstance(t), smenu));
+                Origin.AddSubMenu(smenu);
 
-            // damage prediction
-            projectionhandler.init();
+                var omenu = new Menu("Offensives", "omenu");
+                SubMenu(omenu, true);
+                GetItemGroup("Items.Offensives").ForEach(t => NewItem((CoreItem) NewInstance(t), omenu));
+                Origin.AddSubMenu(omenu);
 
-            // object manager
-            gametroyhandler.init();
+                var imenu = new Menu("Consumables", "imenu");
+                GetItemGroup("Items.Consumables").ForEach(t => NewItem((CoreItem) NewInstance(t), imenu));
+                Origin.AddSubMenu(imenu);
 
-            Obj_AI_Base.OnLevelUp += Obj_AI_Base_OnLevelUp;
-            Obj_AI_Base.OnPlaceItemInSlot += Obj_AI_Base_OnPlaceItemInSlot;
+                var amenu = new Menu("Auto Spells", "amenu");
+                SubMenu(amenu, false);
+                GetItemGroup("Spells.Evaders").ForEach(t => NewSpell((CoreSpell) NewInstance(t), amenu));
+                GetItemGroup("Spells.Shields").ForEach(t => NewSpell((CoreSpell) NewInstance(t), amenu));
+                GetItemGroup("Spells.Health").ForEach(t => NewSpell((CoreSpell) NewInstance(t), amenu));
+                GetItemGroup("Spells.Slows").ForEach(t => NewSpell((CoreSpell) NewInstance(t), amenu));
+                GetItemGroup("Spells.Heals").ForEach(t => NewSpell((CoreSpell) NewInstance(t), amenu));
+                Origin.AddSubMenu(amenu);
 
-            Game.PrintChat("<b>Activator#</b> - Loaded!");
-            updater.UpdateCheck();
+                var zmenu = new Menu("Misc/Settings", "settings");
 
-            foreach (var autospell in spelldata.mypells)
-                if (Player.GetSpellSlot(autospell.Name) != SpellSlot.Unknown)
-                    Game.OnUpdate += autospell.OnTick;
-
-            foreach (var item in spelldata.items)
-            {
-                if (!LeagueSharp.Common.Items.HasItem(item.Id)) 
-                    continue;
-
-                if (!spelldata.activeitems.Contains(item))
+                if (SmiteInGame)
                 {
-                    Game.OnUpdate += item.OnTick;
-                    spelldata.activeitems.Add(item);
-                    Game.PrintChat("<b>Activator#</b> - <font color=\"#FFF280\">" + item.Name + "</font> active!");
+                    var ddmenu = new Menu("Drawings", "drawings");
+                    ddmenu.AddItem(new MenuItem("drawfill", "Draw Smite Fill")).SetValue(true);
+                    ddmenu.AddItem(new MenuItem("drawsmite", "Draw Smite Range")).SetValue(true);
+                    zmenu.AddSubMenu(ddmenu);
                 }
+
+                zmenu.AddItem(new MenuItem("acdebug", "Debug")).SetValue(false);
+                zmenu.AddItem(new MenuItem("evade", "Evade Integration")).SetValue(true);
+                zmenu.AddItem(new MenuItem("healthp", "Ally Priority:")).SetValue(new StringList(new[] { "Low HP", "Most AD/AP", "Most HP" }, 1));
+                zmenu.AddItem(new MenuItem("usecombo", "Combo (active)")).SetValue(new KeyBind(32, KeyBindType.Press, true));
+
+                var uumenu = new Menu("Evade Menu", "evadem");
+                LoadEvadeMenu(uumenu);
+                zmenu.AddSubMenu(uumenu);
+
+                Origin.AddSubMenu(zmenu);
+
+                Origin.AddToMainMenu();
+
+                // drawings
+                Drawings.Load();
+
+                // damage prediction
+                Projections.Load();
+
+                // object manager
+                ObjectHandler.Load();
+
+                Obj_AI_Base.OnLevelUp += Obj_AI_Base_OnLevelUp;
+                Obj_AI_Base.OnPlaceItemInSlot += Obj_AI_Base_OnPlaceItemInSlot;
+
+                Game.PrintChat("<b>Activator#</b> - Loaded!");
+                Updater.UpdateCheck();
+
+                foreach (var autospell in Lists.Spells)
+                    if (Player.GetSpellSlot(autospell.Name) != SpellSlot.Unknown)
+                        Game.OnUpdate += autospell.OnTick;
+
+                foreach (var item in Lists.Items)
+                {
+                    if (!LeagueSharp.Common.Items.HasItem(item.Id)) 
+                        continue;
+
+                    if (!Lists.BoughtItems.Contains(item))
+                    {
+                        Game.OnUpdate += item.OnTick;
+                        Lists.BoughtItems.Add(item);
+                        Game.PrintChat("<b>Activator#</b> - <font color=\"#FFF280\">" + item.Name + "</font> active!");
+                    }
+                }
+
+                foreach (var summoner in Lists.Summoners)
+                    if (summoner.Slot != SpellSlot.Unknown ||
+                        summoner.ExtraNames.Any(x => Player.GetSpellSlot(x) != SpellSlot.Unknown))
+                        Game.OnUpdate += summoner.OnTick;
+
+                Utility.DelayAction.Add(3000, CheckEvade);
             }
-
-            foreach (var summoner in spelldata.summoners)
-                if (summoner.Slot != SpellSlot.Unknown ||
-                    summoner.ExtraNames.Any(x => Player.GetSpellSlot(x) != SpellSlot.Unknown))
-                    Game.OnUpdate += summoner.OnTick;
-
-            Utility.DelayAction.Add(3000, CheckEvade);
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private static void Obj_AI_Base_OnPlaceItemInSlot(Obj_AI_Base sender, Obj_AI_BasePlaceItemInSlotEventArgs args)
@@ -157,43 +168,43 @@ namespace Activator
             if (!sender.IsMe)
                 return;
 
-            foreach (var item in spelldata.items)
+            foreach (var item in Lists.Items)
             {
                 if (item.Id == (int) args.Id)
                 {
-                    if (!spelldata.activeitems.Contains(item))
+                    if (!Lists.BoughtItems.Contains(item))
                     {
                         Game.OnUpdate += item.OnTick;
-                        spelldata.activeitems.Add(item);
+                        Lists.BoughtItems.Add(item);
                         Game.PrintChat("<b>Activator#</b> - <font color=\"#FFF280\">" + item.Name + "</font> active!");
                     }
                 }
             }
         }
 
-        private static void NewItem(item item, Menu parent)
+        private static void NewItem(CoreItem item, Menu parent)
         {
             if (item.Maps.Contains((MapType) MapId) ||
                 item.Maps.Contains(MapType.Common))
             {
-                spelldata.items.Add(item.CreateMenu(parent));
+                Lists.Items.Add(item.CreateMenu(parent));
             }
         }
 
-        private static void NewSpell(spell spell, Menu parent)
+        private static void NewSpell(CoreSpell spell, Menu parent)
         {
             if (Player.GetSpellSlot(spell.Name) != SpellSlot.Unknown)
-                spelldata.mypells.Add(spell.CreateMenu(parent));
+                Lists.Spells.Add(spell.CreateMenu(parent));
         }
 
-        private static void NewSummoner(summoner summoner, Menu parent)
+        private static void NewSummoner(CoreSum summoner, Menu parent)
         {
             if (!summoner.Name.Contains("smite") && 
                 Player.GetSpellSlot(summoner.Name) != SpellSlot.Unknown)
-                spelldata.summoners.Add(summoner.CreateMenu(parent));
+                Lists.Summoners.Add(summoner.CreateMenu(parent));
 
             if (summoner.Name.Contains("smite") && SmiteInGame)
-                spelldata.summoners.Add(summoner.CreateMenu(parent));
+                Lists.Summoners.Add(summoner.CreateMenu(parent));
         }
 
         private static List<Type> GetItemGroup(string nspace)
@@ -202,7 +213,7 @@ namespace Activator
                 Assembly.GetExecutingAssembly()
                     .GetTypes()
                     .FindAll(t => t.IsClass && t.Namespace == "Activator." + nspace &&
-                                  t.Name != "item" && t.Name != "spell" && t.Name != "summoner" &&
+                                  t.Name != "CoreItem" && t.Name != "CoreSpell" && t.Name != "CoreSum" &&
                                  !t.Name.Contains("c__")); // kek
         }
 
@@ -212,17 +223,17 @@ namespace Activator
             {
                 if (entry.Key == Player.ChampionName)
                     foreach (DamageSpell spell in entry.Value)
-                        spelldata.damagelib.Add(spell.Damage, spell.Slot);          
+                        Data.SpellData.DamageLib.Add(spell.Damage, spell.Slot);          
             }
         }
 
         private static void GetHeroesInGame()
         {
             foreach (var i in ObjectManager.Get<Obj_AI_Hero>().Where(i => i.Team == Player.Team))
-                Heroes.Add(new champion(i, 0));
+                Heroes.Add(new Champion(i, 0));
 
             foreach (var i in ObjectManager.Get<Obj_AI_Hero>().Where(i => i.Team != Player.Team))
-                Heroes.Add(new champion(i, 0));
+                Heroes.Add(new Champion(i, 0));
         }
 
         private static void GetSmiteSlot()
@@ -244,15 +255,15 @@ namespace Activator
         {
             foreach (var i in ObjectManager.Get<Obj_AI_Hero>().Where(h => h.Team != Player.Team))
             {
-                foreach (var item in gametroydata.troydata.Where(x => x.ChampionName == i.ChampionName))
+                foreach (var item in GameTroyData.Troys.Where(x => x.ChampionName == i.ChampionName))
                 {
                     TroysInGame = true;
-                    gametroy.Troys.Add(new gametroy(i, item.Slot, item.Name, 0, false));
+                    GameTroy.Troys.Add(new GameTroy(i, item.Slot, item.Name, 0, false));
                 }
             }
         }
 
-        public static IEnumerable<champion> Allies()
+        public static IEnumerable<Champion> Allies()
         {
             switch (Origin.Item("healthp").GetValue<StringList>().SelectedIndex)
             {
@@ -314,7 +325,7 @@ namespace Activator
                 var menu = new Menu(unit.Player.ChampionName, unit.Player.NetworkId + "menu");
 
                 // new menu per spell
-                foreach (var entry in spelldata.spells)
+                foreach (var entry in Data.SpellData.Spells)
                 {
                     if (entry.ChampionName == unit.Player.ChampionName.ToLower())
                     {                           

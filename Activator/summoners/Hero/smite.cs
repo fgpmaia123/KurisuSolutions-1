@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
-namespace Activator.Summoners
+namespace Activator.Summoners.Hero
 {
-    internal class smite : summoner
+    internal class smite : CoreSum
     {
         internal override string Name
         {
@@ -53,7 +54,6 @@ namespace Activator.Summoners
             "TT_NGolem5.1",
             "TT_NWolf3.1",
             "TT_NWolf6.1" 
-
         };
 
         internal override string[] ExtraNames
@@ -70,7 +70,7 @@ namespace Activator.Summoners
 
         internal static void L33TSmite(Obj_AI_Base unit, float smitedmg)
         {
-            foreach (var hero in championsmite.List.Where(x => x.Name == Activator.Player.ChampionName))
+            foreach (var hero in ChampionSmite.SpellList.Where(x => x.Name == Activator.Player.ChampionName))
             {
                 if (Activator.Player.GetSpellDamage(unit, hero.Slot, hero.Stage) + smitedmg >= unit.Health)
                 {

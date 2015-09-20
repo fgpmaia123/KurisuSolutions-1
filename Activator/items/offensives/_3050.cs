@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Offensives
 {
-    class _3050 : item
+    class _3050 : CoreItem
     {
         internal override int Id
         {
@@ -68,7 +69,7 @@ namespace Activator.Items.Offensives
 
             if (!highadhero.Player.IsMe && highadhero.Player.Distance(Player.ServerPosition) <= Range)
             {
-                if (!highadhero.Player.HasBuff("rallyingbanneraurafriend", true))
+                if (!highadhero.Player.HasBuff("rallyingbanneraurafriend"))
                 {
                     UseItem(highadhero.Player, Menu.Item("mode" + Name).GetValue<StringList>().SelectedIndex == 1);
                 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 
 namespace Activator.Items
 {
-    public class item
+    public class CoreItem
     {
         internal virtual int Id { get; set; }
         internal virtual int Priority { get; set; }
@@ -25,7 +26,7 @@ namespace Activator.Items
         public Menu Menu { get; private set; }
         public Menu Parent { get { return Menu.Parent; } }
         public Obj_AI_Hero Player { get { return ObjectManager.Player; } }
-        public champion Tar
+        public Champion Tar
         {
             get
             {
@@ -36,9 +37,9 @@ namespace Activator.Items
             }
         }
 
-        public static IEnumerable<item> PriorityList()
+        public static IEnumerable<CoreItem> PriorityList()
         {
-            var hpi = from ii in spelldata.items
+            var hpi = from ii in Lists.Items
                       where  LeagueSharp.Common.Items.CanUseItem(ii.Id) && ii.Craving
                       orderby ii.Menu.Item("prior" + ii.Name).GetValue<Slider>().Value descending 
                       select ii;
@@ -117,7 +118,7 @@ namespace Activator.Items
             Craving = false;
         }
 
-        public item CreateMenu(Menu root)
+        public CoreItem CreateMenu(Menu root)
         {
             var usefname = DisplayName ?? Name;
 

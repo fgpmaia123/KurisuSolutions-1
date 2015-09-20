@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Linq;
+using Activator.Handlers;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Cleansers
 {
-    class _3140 : item 
+    class _3140 : CoreItem 
     {
         internal override int Id
         {
@@ -69,7 +70,7 @@ namespace Activator.Items.Cleansers
                     if (!Parent.Item(Parent.Name + "useon" + hero.Player.ChampionName).GetValue<bool>())
                         continue;
 
-                    spelldebuffhandler.CheckQSS(hero.Player);
+                    Auras.CheckQSS(hero.Player);
 
                     if (hero.QSSBuffCount >= Menu.Item("use" + Name + "number").GetValue<Slider>().Value &&
                         hero.QSSHighestBuffTime >= Menu.Item("use" + Name + "time").GetValue<Slider>().Value)

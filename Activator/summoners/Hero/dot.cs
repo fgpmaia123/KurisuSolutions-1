@@ -5,7 +5,7 @@ using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    internal class dot : summoner
+    internal class dot : CoreSum
     {
         internal override string Name
         {
@@ -42,7 +42,7 @@ namespace Activator.Summoners
                 if (!tar.Player.IsValidTarget(600))
                     continue;
 
-                if (tar.Player.IsZombie || tar.Player.HasBuff("summonerdot", true)) 
+                if (tar.Player.IsZombie || tar.Player.HasBuff("summonerdot")) 
                     continue;
 
                 if (!Parent.Item(Parent.Name + "useon" + tar.Player.ChampionName).GetValue<bool>())
@@ -82,7 +82,7 @@ namespace Activator.Summoners
 
                         break;
                     case "Diana":
-                        if (!tar.Player.HasBuff("dianamoonlight", true) &&
+                        if (!tar.Player.HasBuff("dianamoonlight") &&
                             Menu.Item("ii" + Player.ChampionName).GetValue<bool>() &&
                             Player.GetSpell(SpellSlot.Q).State != SpellState.NotLearned)
                             continue;
@@ -101,7 +101,7 @@ namespace Activator.Summoners
 
                 // combo damge
                 totaldmg +=
-                    spelldata.damagelib.Sum(
+                    Data.SpellData.DamageLib.Sum(
                         entry =>
                             Player.GetSpell(entry.Value).IsReady(5)
                                 ? entry.Key(Player, tar.Player, Player.GetSpell(entry.Value).Level - 1)

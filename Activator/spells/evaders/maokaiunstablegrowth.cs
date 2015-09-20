@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Evaders
 {
-    class maokaiunstablegrowth : spell
+    class maokaiunstablegrowth : CoreSpell
     {
         internal override string Name
         {

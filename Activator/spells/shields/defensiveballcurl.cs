@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using Activator.Spells;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class defensiveballcurl : spell
+    class defensiveballcurl : CoreSpell
     {
         internal override string Name
         {

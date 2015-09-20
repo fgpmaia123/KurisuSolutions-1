@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Evaders
 {
-    internal class hallucinatefull : spell
+    internal class hallucinatefull : CoreSpell
     {
         internal override string Name
         {

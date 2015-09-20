@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 
 namespace Activator.Spells
 {
-    public class spell
+    public class CoreSpell
     {
         internal virtual string Name { get; set; }
         internal virtual string DisplayName { get; set; }
@@ -27,8 +29,7 @@ namespace Activator.Spells
                     .OrderBy(ene => ene.Health/ene.MaxHealth*100).First();
             }
         }
-
-        public spell CreateMenu(Menu root)
+        public CoreSpell CreateMenu(Menu root)
         {
             if (Player.GetSpellSlot(Name) == SpellSlot.Unknown)
                 return null;

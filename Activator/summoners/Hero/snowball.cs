@@ -5,7 +5,7 @@ using LeagueSharp.Common;
 
 namespace Activator.Summoners
 {
-    class snowball : summoner
+    class snowball : CoreSum
     {
         internal override string Name
         {

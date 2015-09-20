@@ -10,11 +10,10 @@
 
 using LeagueSharp;
 using System.Collections.Generic;
-using LeagueSharp.Common;
 
-namespace Activator
+namespace Activator.Data
 {
-    public class spelldebuffdata
+    public class AuraData
     {
         public string Name { get; set; }
         public bool Evade { get; set; }
@@ -31,11 +30,11 @@ namespace Activator
         public bool Included { get; set; }
         public Obj_AI_Hero Sender { get; set; }
 
-        public static List<spelldebuffdata> debuffs = new List<spelldebuffdata>();
+        public static List<AuraData> Auras = new List<AuraData>();
 
-        static spelldebuffdata()
+        static AuraData()
         {
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "gangplankpassiveattackdot",
                 Evade = false,
@@ -47,7 +46,7 @@ namespace Activator
                 Interval = .5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "bantamtraptarget",
                 Evade = false,
@@ -59,7 +58,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "toxicshotparticle",
                 Evade = false,
@@ -71,7 +70,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "talonbleeddebuf",
                 Evade = false,
@@ -83,7 +82,7 @@ namespace Activator
                 Interval = .5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "alzaharmaleficvisions",
                 Evade = false,
@@ -95,7 +94,7 @@ namespace Activator
                 Interval = .5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "drainchannel",
                 Evade = false,
@@ -107,7 +106,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "hecarimdefilelifeleech",
                 Evade = false,
@@ -119,7 +118,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "swaintorment",
                 Evade = false,
@@ -131,7 +130,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "brandablaze",
                 Evade = false,
@@ -143,7 +142,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "fizzseastonetrident",
                 Evade = false,
@@ -155,7 +154,7 @@ namespace Activator
                 Interval = .5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "tristanachargesound",
                 Evade = false,
@@ -167,7 +166,7 @@ namespace Activator
                 Interval = 4.0
             });
             
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "dariushemo",
                 Evade = false,
@@ -179,7 +178,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "bushwackdamage",
                 Evade = false,
@@ -191,7 +190,7 @@ namespace Activator
                 Interval = .5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "suppression",
                 Evade = false,
@@ -203,7 +202,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "shyvanaimmolationaura",
                 Evade = false,
@@ -215,7 +214,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "missfortunescattershotslow",
                 Evade = false,
@@ -227,7 +226,7 @@ namespace Activator
                 Interval = 0.5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "missfortunepassivestack",
                 Evade = false,
@@ -239,7 +238,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "shyvanaimmolatedragon",
                 Evade = false,
@@ -251,7 +250,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "zileanqenemybomb",
                 Evade = false,
@@ -263,7 +262,7 @@ namespace Activator
                 Interval = 3.8
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "monkeykingspintowin",
                 Evade = false,
@@ -275,7 +274,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "zacr",
                 Evade = true,
@@ -288,7 +287,7 @@ namespace Activator
 
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "mordekaiserchildrenofthegrave",
                 Evade = false,
@@ -300,7 +299,7 @@ namespace Activator
                 Interval = 1.5
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "summonerdot",
                 Evade = false,
@@ -312,7 +311,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "burningagony",
                 Evade = false,
@@ -324,7 +323,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "garene",
                 Evade = false,
@@ -336,7 +335,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "auraofdespair",
                 Evade = false,
@@ -348,7 +347,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "hecarimw",
                 Evade = false,
@@ -360,7 +359,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "bruammark",
                 Evade = false,
@@ -371,7 +370,7 @@ namespace Activator
                 Slot = SpellSlot.Q
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "zedulttargetmark",
                 Evade = true,
@@ -382,7 +381,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "fallenonetarget",
                 Evade = true,
@@ -393,7 +392,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "karthusfallenonetarget",
                 Evade = true,
@@ -404,7 +403,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "fizzmarinerdoombomb",
                 Evade = false,
@@ -415,7 +414,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "soulshackles",
                 Evade = true,
@@ -427,7 +426,7 @@ namespace Activator
                 Interval = 3.9
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "varusrsecondary",
                 Evade = false,
@@ -438,7 +437,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "caitlynaceinthehole",
                 Evade = true,
@@ -449,7 +448,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "vladimirhemoplague",
                 Evade = true,
@@ -460,7 +459,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "urgotswap2",
                 Evade = false,
@@ -471,7 +470,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "skarnerimpale",
                 Evade = false,
@@ -483,7 +482,7 @@ namespace Activator
             });
 
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "poppydiplomaticimmunity",
                 Evade = false,
@@ -494,7 +493,7 @@ namespace Activator
                 Slot = SpellSlot.R
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "blindmonkqonechaos",
                 Evade = false,
@@ -505,7 +504,7 @@ namespace Activator
                 Slot = SpellSlot.Q
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "leblancsoulshackle",
                 Evade = false,
@@ -516,7 +515,7 @@ namespace Activator
                 Slot = SpellSlot.E
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "leblancsoulshacklem",
                 Evade = true,
@@ -527,7 +526,7 @@ namespace Activator
                 Slot = SpellSlot.E
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "vir",
                 Evade = false,
@@ -539,7 +538,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "virknockup",
                 Evade = false,
@@ -551,7 +550,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "yasuorknockupcombo",
                 Evade = false,
@@ -563,7 +562,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "yasuorknockupcombotar",
                 Evade = false,
@@ -575,7 +574,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "zyrabramblezoneknockup",
                 Evade = false,
@@ -587,7 +586,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "frozenheartaura",
                 Evade = false,
@@ -599,7 +598,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "dariusaxebrabcone",
                 Evade = false,
@@ -611,7 +610,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "frozenheartauracosmetic",
                 Evade = false,
@@ -623,7 +622,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "itemsunfirecapeaura",
                 Evade = false,
@@ -636,7 +635,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "fizzmoveback",
                 Evade = false,
@@ -648,7 +647,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "blessingofthelizardelderslow",
                 Evade = false,
@@ -661,7 +660,7 @@ namespace Activator
                 Interval = 1.0
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "dragonburning",
                 Evade = false,
@@ -673,7 +672,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "rocketgrab2",
                 Evade = false,
@@ -685,7 +684,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "monkeykingspinknockup",
                 Evade = false,
@@ -697,7 +696,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "frostarrow",
                 Evade = false,
@@ -709,7 +708,7 @@ namespace Activator
                 Slot = SpellSlot.Unknown
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "Pulverize",
                 Evade = false,
@@ -721,7 +720,7 @@ namespace Activator
                 Slot = SpellSlot.Q
             });
 
-            debuffs.Add(new spelldebuffdata
+            Auras.Add(new AuraData
             {
                 Name = "headbutttarget",
                 Evade = false,

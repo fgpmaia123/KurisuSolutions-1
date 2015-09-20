@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Linq;
+using Activator.Handlers;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Cleansers
 {
-    class _3139 : item
+    class _3139 : CoreItem
     {
         internal override int Id
         {
@@ -69,7 +70,7 @@ namespace Activator.Items.Cleansers
                     if (!Parent.Item(Parent.Name + "useon" + hero.Player.ChampionName).GetValue<bool>())
                         continue;
 
-                    spelldebuffhandler.CheckMercurial(hero.Player);
+                    Auras.CheckMercurial(hero.Player);
 
                     if (hero.MercurialBuffCount >= Menu.Item("use" + Name + "number").GetValue<Slider>().Value &&
                         hero.MercurialHighestBuffTime >= Menu.Item("use" + Name + "time").GetValue<Slider>().Value)

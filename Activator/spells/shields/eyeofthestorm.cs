@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Shields
 {
-    class eyeofthestorm : spell
+    class eyeofthestorm : CoreSpell
     {
         internal override string Name 
         {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Evaders
 {
-    class vladimirsanguinepool : spell
+    class vladimirsanguinepool : CoreSpell
     {
         internal override string Name
         {

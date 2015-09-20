@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Activator.Handlers;
 using LeagueSharp;
 using LeagueSharp.Common;
 
 namespace Activator.Spells.Health
 {
-    internal class kalistarx : spell
+    internal class kalistarx : CoreSpell
     {
         internal override string Name
         {
@@ -44,7 +45,7 @@ namespace Activator.Spells.Health
 
             var cooptarget =
                 ObjectManager.Get<Obj_AI_Hero>()
-                    .FirstOrDefault(hero => hero.HasBuff("kalistacoopstrikeally", true));
+                    .FirstOrDefault(hero => hero.HasBuff("kalistacoopstrikeally"));
 
             foreach (var hero in Activator.Allies())
             {
