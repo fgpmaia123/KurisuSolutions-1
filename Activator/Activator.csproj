@@ -72,9 +72,9 @@
     <Compile Include="Items\Offensives\_3092.cs" />
     <Compile Include="Handlers\Projections.cs" />
     <Compile Include="Base\Enumerators.cs" />
-    <Compile Include="Base\GameTroy.cs" />
+    <Compile Include="Base\Gametroy.cs" />
     <Compile Include="Data\GameTroyData.cs" />
-    <Compile Include="Handlers\ObjectHandler.cs" />
+    <Compile Include="Handlers\Gametroys.cs" />
     <Compile Include="Items\Cleansers\_3137.cs" />
     <Compile Include="Items\Cleansers\_3139.cs" />
     <Compile Include="Items\Cleansers\_3140.cs" />

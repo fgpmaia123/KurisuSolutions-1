@@ -21,9 +21,6 @@ using Activator.Spells;
 using Activator.Summoners;
 using LeagueSharp;
 using LeagueSharp.Common;
-using ObjectHandler = Activator.Handlers.ObjectHandler;
-using SpellData = Activator.Data.SpellData;
-using Version = System.Version;
 
 namespace Activator
 {
@@ -41,7 +38,7 @@ namespace Activator
         internal static bool TroysInGame;
 
         public static bool UseEnemyMenu, UseAllyMenu;
-        public static Version Version;
+        public static System.Version Version;
         public static List<Champion> Heroes = new List<Champion>(); 
 
         private static void Main(string[] args)
@@ -127,7 +124,7 @@ namespace Activator
                 Projections.Load();
 
                 // object manager
-                ObjectHandler.Load();
+                Gametroys.StartOnUpdate();
 
                 Obj_AI_Base.OnLevelUp += Obj_AI_Base_OnLevelUp;
                 Obj_AI_Base.OnPlaceItemInSlot += Obj_AI_Base_OnPlaceItemInSlot;
@@ -225,7 +222,7 @@ namespace Activator
             {
                 if (entry.Key == Player.ChampionName)
                     foreach (DamageSpell spell in entry.Value)
-                        SpellData.DamageLib.Add(spell.Damage, spell.Slot);          
+                        Data.SpellData.DamageLib.Add(spell.Damage, spell.Slot);          
             }
         }
 
@@ -260,7 +257,7 @@ namespace Activator
                 foreach (var item in GameTroyData.Troys.Where(x => x.ChampionName == i.ChampionName))
                 {
                     TroysInGame = true;
-                    GameTroy.Troys.Add(new GameTroy(i, item.Slot, item.Name, 0, false));
+                    Gametroy.Troys.Add(new Gametroy(i, item.Slot, item.Name, 0, false));
                 }
             }
         }
@@ -327,7 +324,7 @@ namespace Activator
                 var menu = new Menu(unit.Player.ChampionName, unit.Player.NetworkId + "menu");
 
                 // new menu per spell
-                foreach (var entry in SpellData.Spells)
+                foreach (var entry in Data.SpellData.Spells)
                 {
                     if (entry.ChampionName == unit.Player.ChampionName.ToLower())
                     {                           

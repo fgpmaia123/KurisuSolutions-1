@@ -13,7 +13,7 @@ using LeagueSharp;
 
 namespace Activator.Base
 {
-    public class GameTroy
+    public class Gametroy
     {
         public int Damage;
         public bool Included;
@@ -23,7 +23,7 @@ namespace Activator.Base
         public SpellSlot Slot;
         public int Start;
 
-        public GameTroy(
+        public Gametroy(
             Obj_AI_Hero owner, 
             SpellSlot slot, 
             string name, 
@@ -41,9 +41,9 @@ namespace Activator.Base
             Damage = incdmg;
         }
 
-        public static List<GameTroy> Troys = new List<GameTroy>(); 
+        public static List<Gametroy> Troys = new List<Gametroy>(); 
 
-        static GameTroy()
+        static Gametroy()
         {
             
         }
