@@ -9,17 +9,21 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Collections.Generic;
-using Activator.Handlers;
+using Activator.Base;
 using Activator.Data;
+using Activator.Handlers;
 using Activator.Items;
 using Activator.Spells;
 using Activator.Summoners;
 using LeagueSharp;
 using LeagueSharp.Common;
+using ObjectHandler = Activator.Handlers.ObjectHandler;
+using SpellData = Activator.Data.SpellData;
+using Version = System.Version;
 
 namespace Activator
 {
@@ -37,7 +41,7 @@ namespace Activator
         internal static bool TroysInGame;
 
         public static bool UseEnemyMenu, UseAllyMenu;
-        public static System.Version Version;
+        public static Version Version;
         public static List<Champion> Heroes = new List<Champion>(); 
 
         private static void Main(string[] args)
@@ -123,7 +127,7 @@ namespace Activator
                 Projections.Load();
 
                 // object manager
-                Handlers.ObjectHandler.Load();
+                ObjectHandler.Load();
 
                 Obj_AI_Base.OnLevelUp += Obj_AI_Base_OnLevelUp;
                 Obj_AI_Base.OnPlaceItemInSlot += Obj_AI_Base_OnPlaceItemInSlot;
@@ -221,7 +225,7 @@ namespace Activator
             {
                 if (entry.Key == Player.ChampionName)
                     foreach (DamageSpell spell in entry.Value)
-                        Data.SpellData.DamageLib.Add(spell.Damage, spell.Slot);          
+                        SpellData.DamageLib.Add(spell.Damage, spell.Slot);          
             }
         }
 
@@ -323,7 +327,7 @@ namespace Activator
                 var menu = new Menu(unit.Player.ChampionName, unit.Player.NetworkId + "menu");
 
                 // new menu per spell
-                foreach (var entry in Data.SpellData.Spells)
+                foreach (var entry in SpellData.Spells)
                 {
                     if (entry.ChampionName == unit.Player.ChampionName.ToLower())
                     {                           

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Linq;
-using Activator.Handlers;
-using Activator.Spells;
-using LeagueSharp.Common;
+using Activator.Base;
 
 namespace Activator.Spells.Evaders
 {

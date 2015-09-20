@@ -10,8 +10,10 @@
 
 using System;
 using System.Linq;
+using Activator.Base;
 using LeagueSharp;
 using LeagueSharp.Common;
+using SpellData = Activator.Data.SpellData;
 
 namespace Activator.Handlers
 {
@@ -42,7 +44,7 @@ namespace Activator.Handlers
             var startPos = missile.StartPosition.To2D();
             var endPos = missile.EndPosition.To2D();
 
-            var data = Data.SpellData.GetByMissileName(missile.SData.Name.ToLower());
+            var data = SpellData.GetByMissileName(missile.SData.Name.ToLower());
             if (data == null)
                 return;
 
@@ -188,7 +190,7 @@ namespace Activator.Handlers
 
                     #endregion
 
-                    foreach (var data in Data.SpellData.Spells.Where(x => x.SDataName == args.SData.Name.ToLower()))
+                    foreach (var data in SpellData.Spells.Where(x => x.SDataName == args.SData.Name.ToLower()))
                     {
                         #region self/selfaoe spell detection
 

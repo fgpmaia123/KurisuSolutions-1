@@ -1,6 +1,5 @@
 ﻿using System;
-using Activator.Handlers;
-using LeagueSharp;
+using Activator.Base;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Offensives

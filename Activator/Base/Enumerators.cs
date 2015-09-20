@@ -13,7 +13,7 @@ using Activator.Items;
 using Activator.Spells;
 using Activator.Summoners;
 
-namespace Activator.Handlers
+namespace Activator.Base
 {
     public class Lists
     {

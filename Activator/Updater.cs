@@ -30,7 +30,7 @@ namespace Activator
                             if (match.Success)
                             {
                                 var gitVersion =
-                                    new System.Version(
+                                    new Version(
                                         string.Format(
                                             "{0}.{1}.{2}.{3}",
                                             match.Groups[1],

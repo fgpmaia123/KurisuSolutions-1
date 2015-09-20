@@ -1,5 +1,5 @@
 ﻿using System;
-using Activator.Handlers;
+using Activator.Base;
 using LeagueSharp;
 using LeagueSharp.Common;
 
@@ -87,7 +87,6 @@ namespace Activator.Items.Offensives
 
         public override void OnTick(EventArgs args)
         {
-            return;
         }
     }
 }

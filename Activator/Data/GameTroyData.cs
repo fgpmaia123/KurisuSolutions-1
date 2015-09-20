@@ -8,9 +8,9 @@
 // Author:		Robin Kurisu
 #endregion
 
-using LeagueSharp;
 using System.Collections.Generic;
-using Activator.Handlers;
+using Activator.Base;
+using LeagueSharp;
 
 namespace Activator.Data
 {
@@ -36,7 +36,7 @@ namespace Activator.Data
                 ChampionName = "Hecarim",
                 Radius = 500f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = .75
             });
@@ -47,7 +47,7 @@ namespace Activator.Data
                 ChampionName = "Gangplank",
                 Radius = 500f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.5
             });
@@ -58,7 +58,7 @@ namespace Activator.Data
                 ChampionName = "Diana",
                 Radius = 200f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -69,7 +69,7 @@ namespace Activator.Data
                 ChampionName = "Malzahar",
                 Radius = 475f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -80,7 +80,7 @@ namespace Activator.Data
                 ChampionName = "Karthus",
                 Radius = 475f,
                 Slot = SpellSlot.E,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -91,7 +91,7 @@ namespace Activator.Data
                 ChampionName = "Elise",
                 Radius =  150f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -102,7 +102,7 @@ namespace Activator.Data
                 ChampionName = "FiddleSticks",
                 Radius = 250f,
                 Slot = SpellSlot.E,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = true,
                 Interval = 1.5
             });
@@ -113,7 +113,7 @@ namespace Activator.Data
                 ChampionName = "Ahri",
                 Radius = 550f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -125,7 +125,7 @@ namespace Activator.Data
                 Radius = 300f,
                 Slot = SpellSlot.R,
                 DelayFromStart = 800,
-                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.Ultimate },
+                HitType = new[] { Base.HitType.Danger, Base.HitType.Ultimate },
                 PredictDmg = true,
                 Interval = 1.0
              });
@@ -136,7 +136,7 @@ namespace Activator.Data
                 ChampionName = "Katarina",
                 Radius = 550f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.ForceExhaust, Handlers.HitType.Danger },
+                HitType = new[] { Base.HitType.ForceExhaust, Base.HitType.Danger },
                 PredictDmg = true,
                 Interval = 0.5
             });
@@ -147,7 +147,7 @@ namespace Activator.Data
                 ChampionName = "Nautilus",
                 Radius = 250f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.CrowdControl, Handlers.HitType.Danger },
+                HitType = new[] { Base.HitType.CrowdControl, Base.HitType.Danger },
                 PredictDmg = false
             });
 
@@ -157,7 +157,7 @@ namespace Activator.Data
                 ChampionName = "Singed",
                 Radius = 200f,
                 Slot = SpellSlot.Q,
-                HitType = new []{ Handlers.HitType.None },
+                HitType = new []{ Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -168,7 +168,7 @@ namespace Activator.Data
                 ChampionName = "Rammus",
                 Radius = 450f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -182,8 +182,8 @@ namespace Activator.Data
                 HitType =
                     new[]
                     {
-                        Handlers.HitType.Danger, Handlers.HitType.Ultimate,
-                        Handlers.HitType.ForceExhaust
+                        Base.HitType.Danger, Base.HitType.Ultimate,
+                        Base.HitType.ForceExhaust
                     },
                 PredictDmg = true,
                 Interval = 1.0
@@ -195,7 +195,7 @@ namespace Activator.Data
                 ChampionName = "Caitlyn",
                 Radius = 280f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = false,
                 Interval = 1.0
             });
@@ -206,7 +206,7 @@ namespace Activator.Data
                 ChampionName = "Lux",
                 Radius = 400f,
                 Slot = SpellSlot.E,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 2.0
             });
@@ -217,7 +217,7 @@ namespace Activator.Data
                 ChampionName = "Viktor",
                 Radius = 425f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.Danger, Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.Danger, Base.HitType.CrowdControl },
                 PredictDmg = true,
                 Interval = .75
             });
@@ -228,7 +228,7 @@ namespace Activator.Data
                 ChampionName = "Viktor",
                 Radius = 375f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = false
             });
 
@@ -238,7 +238,7 @@ namespace Activator.Data
                 ChampionName = "Viktor",
                 Radius = 375f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = false
             });
 
@@ -248,7 +248,7 @@ namespace Activator.Data
                 ChampionName = "Anivia",
                 Radius = 450f,
                 Slot = SpellSlot.R,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -259,7 +259,7 @@ namespace Activator.Data
                 ChampionName = "Ziggs",
                 Radius = 400f,
                 Slot = SpellSlot.E,
-                HitType = new []{ Handlers.HitType.CrowdControl },
+                HitType = new []{ Base.HitType.CrowdControl },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -270,7 +270,7 @@ namespace Activator.Data
                 ChampionName = "Ziggs",
                 Radius = 350f,
                 Slot = SpellSlot.W,
-                HitType = new []{ Handlers.HitType.CrowdControl },
+                HitType = new []{ Base.HitType.CrowdControl },
                 PredictDmg = false
             });
 
@@ -280,7 +280,7 @@ namespace Activator.Data
                 ChampionName = "Cassiopeia",
                 Radius = 365f,
                 Slot = SpellSlot.W,
-                HitType = new[] { Handlers.HitType.None },
+                HitType = new[] { Base.HitType.None },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -291,7 +291,7 @@ namespace Activator.Data
                 ChampionName = "Soraka",
                 Radius = 375f,
                 Slot = SpellSlot.E,
-                HitType = new[] { Handlers.HitType.CrowdControl },
+                HitType = new[] { Base.HitType.CrowdControl },
                 PredictDmg = true,
                 Interval = 1.0
             });
@@ -302,7 +302,7 @@ namespace Activator.Data
                 ChampionName = "Morgana",
                 Radius = 375f,
                 Slot = SpellSlot.W,
-                HitType = new []{ Handlers.HitType.None },
+                HitType = new []{ Base.HitType.None },
                 PredictDmg = true,
                 Interval = .75
             });

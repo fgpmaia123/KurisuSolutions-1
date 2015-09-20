@@ -1,5 +1,5 @@
 ﻿using System;
-using Activator.Handlers;
+using Activator.Base;
 using LeagueSharp.Common;
 
 namespace Activator.Items.Consumables

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using LeagueSharp;
 
-namespace Activator.Handlers
+namespace Activator.Base
 {
     public class ChampionSmite
     {

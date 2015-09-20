@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Linq;
-using Activator.Handlers;
+using Activator.Base;
 using LeagueSharp;
 using LeagueSharp.Common;
 

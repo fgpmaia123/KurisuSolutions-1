@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Linq;
-using Activator.Handlers;
-using LeagueSharp;
+using Activator.Base;
 using LeagueSharp.Common;
 
 namespace Activator.Summoners

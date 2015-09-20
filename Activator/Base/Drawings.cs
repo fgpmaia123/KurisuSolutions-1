@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
+using Activator.Summoners.Hero;
 using LeagueSharp;
 using LeagueSharp.Common;
-using Color = System.Drawing.Color;
 
-namespace Activator.Handlers
+namespace Activator.Base
 {
     class Drawings
     {
@@ -41,7 +42,7 @@ namespace Activator.Handlers
 
                     if (!Activator.Player.IsDead && Activator.Origin.Item("drawfill").GetValue<bool>())
                     {
-                        if (Activator.MapId != (int) Handlers.MapType.SummonersRift)
+                        if (Activator.MapId != (int) MapType.SummonersRift)
                             return;
                         
                         var height = 6;
@@ -53,8 +54,8 @@ namespace Activator.Handlers
                             var minion in
                                 MinionManager.GetMinions(Activator.Player.Position, 1200f, MinionTypes.All,
                                     MinionTeam.Neutral)
-                                    .Where(th => (Summoners.Hero.smite.LargeMinions.Any(x => th.Name.StartsWith(x)) ||
-                                                    Summoners.Hero.smite.EpicMinions.Any(e => th.Name.StartsWith(e))) &&
+                                    .Where(th => (smite.LargeMinions.Any(x => th.Name.StartsWith(x)) ||
+                                                    smite.EpicMinions.Any(e => th.Name.StartsWith(e))) &&
                                                     !th.Name.Contains("Mini")))
                         {
                             if (!minion.IsValidTarget(1000) || !minion.IsHPBarRendered)

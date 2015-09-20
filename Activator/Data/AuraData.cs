@@ -8,8 +8,8 @@
 // Author:		Robin Kurisu
 #endregion
 
-using LeagueSharp;
 using System.Collections.Generic;
+using LeagueSharp;
 
 namespace Activator.Data
 {
