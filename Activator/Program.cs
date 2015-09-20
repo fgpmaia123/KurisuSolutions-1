@@ -13,14 +13,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+
+#region Namespaces
+using LeagueSharp;
+using LeagueSharp.Common;
 using Activator.Base;
 using Activator.Data;
 using Activator.Handlers;
 using Activator.Items;
 using Activator.Spells;
 using Activator.Summoners;
-using LeagueSharp;
-using LeagueSharp.Common;
+#endregion
 
 namespace Activator
 {
@@ -156,9 +159,11 @@ namespace Activator
 
                 Utility.DelayAction.Add(3000, CheckEvade);
             }
+
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                Game.PrintChat("Fatal error loading Activator!");
             }
         }
 
